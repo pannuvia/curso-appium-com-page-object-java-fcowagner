@@ -36,7 +36,7 @@ public class ElementosFormularioTest {
 //			System.out.println(elemento.getText());
 //		}
 
-		// selecionar Formulário
+		// clicar em Formulário
 		List<MobileElement> elementosEncontrados = driver.findElements(By.className("android.widget.TextView"));
 		elementosEncontrados.get(1).click();
 
@@ -44,7 +44,7 @@ public class ElementosFormularioTest {
 		MobileElement campoNome = driver.findElement(MobileBy.AccessibilityId("nome"));
 		campoNome.sendKeys("Pannuvia");
 
-		// verificar nome preenchido
+		// validar nome preenchido
 		String nomePreenchido = campoNome.getText();
 		Assert.assertEquals("Pannuvia", nomePreenchido);
 
@@ -65,7 +65,7 @@ public class ElementosFormularioTest {
 				desiredCapabilities);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		// selecionar Formulário
+		// clicar em Formulário
 		driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']")).click();
 
 		// clicar na combo
@@ -74,7 +74,7 @@ public class ElementosFormularioTest {
 		// selecionar a opção desejada
 		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Nintendo Switch']")).click();
 
-		// verificar opção selecionada
+		// validar opção selecionada
 		String opcaoSelecionada = driver.findElement(By.xpath("//android.widget.Spinner/android.widget.TextView"))
 				.getText();
 		Assert.assertEquals("Nintendo Switch", opcaoSelecionada);
@@ -96,7 +96,7 @@ public class ElementosFormularioTest {
 				desiredCapabilities);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		// selecionar Formulário
+		// clicar em Formulário
 		driver.findElement(By.xpath("//*[@text='Formulário']")).click();
 
 		// verificar status do checkbox
@@ -106,7 +106,7 @@ public class ElementosFormularioTest {
 		// clicar no checkBox
 		checkBox.click();
 
-		// verificar status alterado do checkbox
+		// validar status alterado do checkbox
 		Assert.assertTrue(checkBox.getAttribute("checked").equals("true"));
 		// Assert.assertFalse(checkBox.getAttribute("checked").equals("false"));
 
@@ -127,7 +127,7 @@ public class ElementosFormularioTest {
 				desiredCapabilities);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		// selecionar Formulário
+		// clicar em Formulário
 		driver.findElement(By.xpath("//*[@text='Formulário']")).click();
 
 		// validar status do switch
@@ -137,7 +137,7 @@ public class ElementosFormularioTest {
 		// clicar no switch
 		switchElement.click();
 
-		// verificar status alterado do switch
+		// validar status alterado do switch
 		Assert.assertTrue(switchElement.getAttribute("checked").equals("false"));
 		// Assert.assertFalse(switchElement.getAttribute("checked").equals("true"));
 
