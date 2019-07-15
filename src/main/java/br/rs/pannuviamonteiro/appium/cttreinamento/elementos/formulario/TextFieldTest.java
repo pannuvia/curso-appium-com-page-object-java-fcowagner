@@ -1,4 +1,4 @@
-package br.rs.pannuviamonteiro.appium.cttreinamento;
+package br.rs.pannuviamonteiro.appium.cttreinamento.elementos.formulario;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,7 +16,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
-public class ElementosFormularioTest {
+public class TextFieldTest {
 
 	private AndroidDriver<MobileElement> driver;
 	
@@ -58,57 +58,6 @@ public class ElementosFormularioTest {
 		Assert.assertEquals("Pannuvia", nomePreenchido);
 	}
 
-	@Test
-	public void selecionarCombo() throws MalformedURLException {
-//		// clicar em Formulário
-//		driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']")).click();
-
-		// clicar na combo
-		driver.findElement(MobileBy.AccessibilityId("console")).click();
-
-		// selecionar a opção desejada
-		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Nintendo Switch']")).click();
-
-		// validar opção selecionada
-		String opcaoSelecionada = driver.findElement(By.xpath("//android.widget.Spinner/android.widget.TextView"))
-				.getText();
-		Assert.assertEquals("Nintendo Switch", opcaoSelecionada);
-	}
-
-	@Test
-	public void interagirComChechBox() throws MalformedURLException {
-//		// clicar em Formulário
-//		driver.findElement(By.xpath("//*[@text='Formulário']")).click();
-
-		// verificar status do checkbox
-		MobileElement checkBox = driver.findElement(By.className("android.widget.CheckBox"));
-		Assert.assertTrue(checkBox.getAttribute("checked").equals("false"));
-
-		// clicar no checkBox
-		checkBox.click();
-
-		// validar status alterado do checkbox
-		Assert.assertTrue(checkBox.getAttribute("checked").equals("true"));
-		// Assert.assertFalse(checkBox.getAttribute("checked").equals("false"));
-	}
-
-	@Test
-	public void interagirComSwitch() throws MalformedURLException {
-//		// clicar em Formulário
-//		driver.findElement(By.xpath("//*[@text='Formulário']")).click();
-		
-		// validar status do switch
-		MobileElement switchElement = driver.findElement(MobileBy.AccessibilityId("switch"));
-		Assert.assertTrue(switchElement.getAttribute("checked").equals("true"));
-
-		// clicar no switch
-		switchElement.click();
-
-		// validar status alterado do switch
-		Assert.assertTrue(switchElement.getAttribute("checked").equals("false"));
-		// Assert.assertFalse(switchElement.getAttribute("checked").equals("true"));
-	}
-	
 	@After
 	public void fecharDriver() {
 		driver.quit();

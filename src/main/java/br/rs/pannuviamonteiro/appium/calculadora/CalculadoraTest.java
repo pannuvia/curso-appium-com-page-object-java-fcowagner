@@ -12,7 +12,7 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class CalculadoraTest {
 
-//	private AndroidDriver driver;
+	private AndroidDriver<MobileElement> driver;
 	
 	@Test
 	public void deveSomarDoisNumeros() throws MalformedURLException {
@@ -24,7 +24,7 @@ public class CalculadoraTest {
 		desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
 		desiredCapabilities.setCapability("noReset", "true");
 
-		AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"),
+		driver = new AndroidDriver<MobileElement>(new URL("http://localhost:4723/wd/hub"),
 				desiredCapabilities);
 
 		MobileElement el1 = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_2");

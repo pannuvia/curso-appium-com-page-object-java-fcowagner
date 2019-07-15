@@ -1,4 +1,4 @@
-package br.rs.pannuviamonteiro.appium.cttreinamento;
+package br.rs.pannuviamonteiro.appium.cttreinamento.instalacaoapk;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -11,7 +11,9 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class InstalarAPKTest {
-
+	
+	private AndroidDriver<MobileElement> driver;
+	
 	@Test
 	public void instalarAPK() throws MalformedURLException {
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -21,7 +23,7 @@ public class InstalarAPKTest {
 		desiredCapabilities.setCapability(MobileCapabilityType.APP, "D:\\DBSERVER\\BACKUP PROJETOS\\eclipse-workspace\\curso-appium-java-fcowagner\\src\\main\\resources\\CTAppium-1-1.apk");
 		desiredCapabilities.setCapability("noReset", "true");
 
-		AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
+		driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
 
 		driver.quit();
 	}
