@@ -24,7 +24,6 @@ public class FormularioTest {
 		desiredCapabilities.setCapability("deviceName", "emulator-5554");
 		desiredCapabilities.setCapability("automationName", "UiAutomator2");
 		desiredCapabilities.setCapability(MobileCapabilityType.APP, "D:\\DBSERVER\\BACKUP PROJETOS\\eclipse-workspace\\curso-appium-java-fcowagner\\src\\main\\resources\\CTAppium-1-1.apk");
-		//desiredCapabilities.setCapability("noReset", "true");
 
 		AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -39,7 +38,6 @@ public class FormularioTest {
 		List<MobileElement> elementosEncontrados = driver.findElements(By.className("android.widget.TextView"));
 		elementosEncontrados.get(1).click();
 		
-		
 		//escrever nome
 		MobileElement campoNome = driver.findElement(MobileBy.AccessibilityId("nome"));
 		campoNome.sendKeys("Pannuvia");
@@ -48,6 +46,35 @@ public class FormularioTest {
 		String nomePreenchido = campoNome.getText();
 		Assert.assertEquals("Pannuvia", nomePreenchido);
 		
+		//fechar driver
+		driver.quit();
+	}
+	
+	@Test
+	public void selecionarCombo() throws MalformedURLException {
+		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+		desiredCapabilities.setCapability("platformName", "Android");
+		desiredCapabilities.setCapability("deviceName", "emulator-5554");
+		desiredCapabilities.setCapability("automationName", "UiAutomator2");
+		desiredCapabilities.setCapability(MobileCapabilityType.APP, "D:\\DBSERVER\\BACKUP PROJETOS\\eclipse-workspace\\curso-appium-java-fcowagner\\src\\main\\resources\\CTAppium-1-1.apk");
+
+		AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				
+		//selecionar Formulário
+		driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']")).click();
+		
+		//clicar na combo
+		driver.findElement(MobileBy.AccessibilityId("console")).click();
+		
+		//selecionar a opção desejada
+		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Nintendo Switch']")).click();
+		
+		//verificar opção selecionada
+		String opcaoSelecionada = driver.findElement(By.xpath("//android.widget.Spinner/android.widget.TextView")).getText();
+		Assert.assertEquals("Nintendo Switch", opcaoSelecionada);
+		
+		//fechar driver
 		driver.quit();
 	}
 }
