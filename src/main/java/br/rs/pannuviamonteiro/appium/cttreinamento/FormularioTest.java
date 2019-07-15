@@ -23,58 +23,125 @@ public class FormularioTest {
 		desiredCapabilities.setCapability("platformName", "Android");
 		desiredCapabilities.setCapability("deviceName", "emulator-5554");
 		desiredCapabilities.setCapability("automationName", "UiAutomator2");
-		desiredCapabilities.setCapability(MobileCapabilityType.APP, "D:\\DBSERVER\\BACKUP PROJETOS\\eclipse-workspace\\curso-appium-java-fcowagner\\src\\main\\resources\\CTAppium-1-1.apk");
+		desiredCapabilities.setCapability(MobileCapabilityType.APP,
+				"D:\\DBSERVER\\BACKUP PROJETOS\\eclipse-workspace\\curso-appium-java-fcowagner\\src\\main\\resources\\CTAppium-1-1.apk");
 
-		AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
+		AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
+				desiredCapabilities);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
+
 //		//Listar elementos da tela
 //		List<MobileElement> elementosEncontrados = driver.findElements(By.className("android.widget.TextView"));
 //		for(MobileElement elemento: elementosEncontrados) {
 //			System.out.println(elemento.getText());
 //		}
-				
-		//selecionar Formulário
+
+		// selecionar Formulário
 		List<MobileElement> elementosEncontrados = driver.findElements(By.className("android.widget.TextView"));
 		elementosEncontrados.get(1).click();
-		
-		//escrever nome
+
+		// escrever nome
 		MobileElement campoNome = driver.findElement(MobileBy.AccessibilityId("nome"));
 		campoNome.sendKeys("Pannuvia");
-		
-		//verificar nome preenchido
+
+		// verificar nome preenchido
 		String nomePreenchido = campoNome.getText();
 		Assert.assertEquals("Pannuvia", nomePreenchido);
-		
-		//fechar driver
+
+		// fechar driver
 		driver.quit();
 	}
-	
+
 	@Test
 	public void selecionarCombo() throws MalformedURLException {
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setCapability("platformName", "Android");
 		desiredCapabilities.setCapability("deviceName", "emulator-5554");
 		desiredCapabilities.setCapability("automationName", "UiAutomator2");
-		desiredCapabilities.setCapability(MobileCapabilityType.APP, "D:\\DBSERVER\\BACKUP PROJETOS\\eclipse-workspace\\curso-appium-java-fcowagner\\src\\main\\resources\\CTAppium-1-1.apk");
+		desiredCapabilities.setCapability(MobileCapabilityType.APP,
+				"D:\\DBSERVER\\BACKUP PROJETOS\\eclipse-workspace\\curso-appium-java-fcowagner\\src\\main\\resources\\CTAppium-1-1.apk");
 
-		AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
+		AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
+				desiredCapabilities);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				
-		//selecionar Formulário
+
+		// selecionar Formulário
 		driver.findElement(By.xpath("//android.widget.TextView[@text='Formulário']")).click();
-		
-		//clicar na combo
+
+		// clicar na combo
 		driver.findElement(MobileBy.AccessibilityId("console")).click();
-		
-		//selecionar a opção desejada
+
+		// selecionar a opção desejada
 		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Nintendo Switch']")).click();
-		
-		//verificar opção selecionada
-		String opcaoSelecionada = driver.findElement(By.xpath("//android.widget.Spinner/android.widget.TextView")).getText();
+
+		// verificar opção selecionada
+		String opcaoSelecionada = driver.findElement(By.xpath("//android.widget.Spinner/android.widget.TextView"))
+				.getText();
 		Assert.assertEquals("Nintendo Switch", opcaoSelecionada);
-		
-		//fechar driver
+
+		// fechar driver
+		driver.quit();
+	}
+
+	@Test
+	public void interagirComChechBox() throws MalformedURLException {
+		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+		desiredCapabilities.setCapability("platformName", "Android");
+		desiredCapabilities.setCapability("deviceName", "emulator-5554");
+		desiredCapabilities.setCapability("automationName", "UiAutomator2");
+		desiredCapabilities.setCapability(MobileCapabilityType.APP,
+				"D:\\DBSERVER\\BACKUP PROJETOS\\eclipse-workspace\\curso-appium-java-fcowagner\\src\\main\\resources\\CTAppium-1-1.apk");
+
+		AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
+				desiredCapabilities);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		// selecionar Formulário
+		driver.findElement(By.xpath("//*[@text='Formulário']")).click();
+
+		// verificar status do checkbox
+		MobileElement checkBox = driver.findElement(By.className("android.widget.CheckBox"));
+		Assert.assertTrue(checkBox.getAttribute("checked").equals("false"));
+
+		// clicar no checkBox
+		checkBox.click();
+
+		// verificar status alterado do checkbox
+		Assert.assertTrue(checkBox.getAttribute("checked").equals("true"));
+		// Assert.assertFalse(checkBox.getAttribute("checked").equals("false"));
+
+		// fechar driver
+		driver.quit();
+	}
+
+	@Test
+	public void interagirComSwitch() throws MalformedURLException {
+		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+		desiredCapabilities.setCapability("platformName", "Android");
+		desiredCapabilities.setCapability("deviceName", "emulator-5554");
+		desiredCapabilities.setCapability("automationName", "UiAutomator2");
+		desiredCapabilities.setCapability(MobileCapabilityType.APP,
+				"D:\\DBSERVER\\BACKUP PROJETOS\\eclipse-workspace\\curso-appium-java-fcowagner\\src\\main\\resources\\CTAppium-1-1.apk");
+
+		AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),
+				desiredCapabilities);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		// selecionar Formulário
+		driver.findElement(By.xpath("//*[@text='Formulário']")).click();
+
+		// verificar status do switch
+		MobileElement switchElement = driver.findElement(MobileBy.AccessibilityId("switch"));
+		Assert.assertTrue(switchElement.getAttribute("checked").equals("true"));
+
+		// clicar no switch
+		switchElement.click();
+
+		// verificar status alterado do switch
+		Assert.assertTrue(switchElement.getAttribute("checked").equals("false"));
+		// Assert.assertFalse(switchElement.getAttribute("checked").equals("true"));
+
+		// fechar driver
 		driver.quit();
 	}
 }
