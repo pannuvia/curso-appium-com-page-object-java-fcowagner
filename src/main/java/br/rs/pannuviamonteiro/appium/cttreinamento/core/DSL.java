@@ -10,7 +10,7 @@ public class DSL {
 		getDriver().findElement(by).sendKeys(texto);
 	}
 	
-	public String obterTexto(By by) {
+	public String capturarTexto(By by) {
 		return getDriver().findElement(by).getText();
 	}
 	
@@ -30,6 +30,8 @@ public class DSL {
 	public boolean isMarcado(By by) {
 		return getDriver().findElement(by).getAttribute("checked").equals("true");
 	}
+	
+
 
 
 }

@@ -21,7 +21,7 @@ public class TextFieldTest {
 	private AndroidDriver<MobileElement> driver;
 	
 	@Before
-	public void inicializarAppium() throws MalformedURLException {
+	public void inicializarAppium() {
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setCapability("platformName", "Android");
 		desiredCapabilities.setCapability("deviceName", "emulator-5554");
@@ -29,8 +29,12 @@ public class TextFieldTest {
 		desiredCapabilities.setCapability(MobileCapabilityType.APP,
 				"D:\\DBSERVER\\BACKUP PROJETOS\\eclipse-workspace\\curso-appium-java-fcowagner\\src\\main\\resources\\CTAppium-1-1.apk");
 
-		driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
-				desiredCapabilities);
+		try {
+			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
+					desiredCapabilities);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		// clicar em Formulário
@@ -38,7 +42,7 @@ public class TextFieldTest {
 	}
 	
 	@Test
-	public void preencherTextField() throws MalformedURLException {
+	public void preencherTextField()  {
 //		//Listar elementos da tela para saber quais são e poder usar o método abaixo
 //		List<MobileElement> elementosEncontrados = driver.findElements(By.className("android.widget.TextView"));
 //		for(MobileElement elemento: elementosEncontrados) {

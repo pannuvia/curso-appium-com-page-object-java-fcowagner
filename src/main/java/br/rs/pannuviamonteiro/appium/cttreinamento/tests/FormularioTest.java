@@ -1,71 +1,49 @@
 package br.rs.pannuviamonteiro.appium.cttreinamento.tests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import java.net.MalformedURLException;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
-import br.rs.pannuviamonteiro.appium.cttreinamento.core.DSL;
-import br.rs.pannuviamonteiro.appium.cttreinamento.core.DriverFactory;
-import io.appium.java_client.MobileBy;
+import br.rs.pannuviamonteiro.appium.cttreinamento.page.FormularioPage;
+import br.rs.pannuviamonteiro.appium.cttreinamento.page.MenuPage;
 
 public class FormularioTest {
 
-	private DSL dsl = new DSL();
-	
-	@Before
-	public void inicializarAppium() throws MalformedURLException {
-		// clicar em Formulário
-		dsl.clicarPorTexto("Formulário");
+	private MenuPage menuPage;
+	private FormularioPage formularioPage;
+
+	public FormularioTest() {
+		this.menuPage = new MenuPage();
+		this.formularioPage = new FormularioPage();
 	}
-	
+
+	@Before
+	public void setUp() {
+		menuPage.acessarFormulario();
+	}
+
 	@Test
-	public void preencherFormulario() throws MalformedURLException {
+	public void preencherFormulario() {
 		
-		//preencher textfield
-		dsl.preencherTextField(MobileBy.AccessibilityId("nome") , "Pannuvia");
+		formularioPage.preencherNome("Pannuvia");
+		formularioPage.selecionarCombo("Nintendo Switch");
+		formularioPage.clicarCheckBox();
+		formularioPage.clicarSwitch();
 
-		// clicar na combo
-		dsl.selecionarCombo(MobileBy.AccessibilityId("console"), "Nintendo Switch");
-				
-		//verificar status do checkbox
-		assertFalse(dsl.isMarcado(By.className("android.widget.CheckBox")));
+		formularioPage.salvar();
 		
-		// clicar no checkBox
-		dsl.clicar(By.className("android.widget.CheckBox"));
-		
-		// verificar status do switch
-		assertTrue(dsl.isMarcado(MobileBy.AccessibilityId("switch")));
-		
-		// clicar no switch
-		dsl.clicar(MobileBy.AccessibilityId("switch"));
-
-		// salvar
-		dsl.clicarPorTexto("SALVAR");
-		
-		// validar textfield
-		assertEquals("Pannuvia", dsl.obterTexto(MobileBy.AccessibilityId("nome")));
-
-		// validar combo
-		String combo = dsl.obterTexto(By.xpath("//android.widget.Spinner/android.widget.TextView"));
-		assertEquals("Nintendo Switch", combo);
-		
-		// validar status checkbox alterado
-		assertTrue(dsl.isMarcado(By.className("android.widget.CheckBox")));
-		
-		// validar status switch alterado
-		assertFalse(dsl.isMarcado(MobileBy.AccessibilityId("switch")));
+		assertEquals("Nome: Pannuvia", formularioPage.capturarNomeCadastrado());
+		assertEquals("Console: switch", formularioPage.capturarComboCadastrado());
+		assertTrue(formularioPage.capturarCheckBoxCadastrado().endsWith("Marcado"));
+		assertTrue(formularioPage.capturarSwitchCadastrado().endsWith("Off"));
 	}
 
 	@After
 	public void fecharDriver() {
-		DriverFactory.destroyDriver();
+	//	DriverFactory.destroyDriver();
 	}
 
 }
