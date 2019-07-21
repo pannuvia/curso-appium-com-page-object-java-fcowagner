@@ -30,12 +30,12 @@ public class FormularioPage extends BasePage {
 		clicar(MobileBy.AccessibilityId("switch"));
 	}
 
-	public boolean isCheckMarcado() {
-		return isMarcado(By.className("android.widget.CheckBox"));
+	public boolean checkEstaMarcado() {
+		return estaMarcado(By.className("android.widget.CheckBox"));
 	}
 
-	public boolean isSwitchMarcado() {
-		return isMarcado(MobileBy.AccessibilityId("switch"));
+	public boolean switchEstaMarcado() {
+		return estaMarcado(MobileBy.AccessibilityId("switch"));
 	}
 
 	public String capturarNomeCadastrado() {

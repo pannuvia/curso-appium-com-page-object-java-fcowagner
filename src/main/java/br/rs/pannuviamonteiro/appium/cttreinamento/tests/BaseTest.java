@@ -24,12 +24,12 @@ public class BaseTest {
 	}
 	
 	@After
-	public void fecharDriver() {
-		gerarScreenshot();
+	public void deveFecharDriver() {
+		deveGerarScreenshot();
 		DriverFactory.getDriver().resetApp();
 	}
 
-	public void gerarScreenshot() {
+	public void deveGerarScreenshot() {
 		File imagem = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
 			FileUtils.copyFile(imagem, new File("target/screenshots/"+testName.getMethodName()+".png"));

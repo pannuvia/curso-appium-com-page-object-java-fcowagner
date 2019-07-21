@@ -2,7 +2,11 @@ package br.rs.pannuviamonteiro.appium.cttreinamento.page;
 
 import static br.rs.pannuviamonteiro.appium.cttreinamento.core.DriverFactory.getDriver;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+
+import io.appium.java_client.MobileElement;
 
 public class BasePage {
 	
@@ -27,8 +31,12 @@ public class BasePage {
 		getDriver().findElement(By.xpath("//android.widget.CheckedTextView[@text='"+ valor +"']")).click();
 	}
 	
-	public boolean isMarcado(By by) {
+	public boolean estaMarcado(By by) {
 		return getDriver().findElement(by).getAttribute("checked").equals("true");
 	}
 	
+	public boolean existeElementoPorTexto(String texto) {
+		List<MobileElement> elementos = getDriver().findElements(By.xpath("//*[@text='"+texto+"']"));
+		return elementos.size() > 0;
+	}
 }

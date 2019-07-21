@@ -25,7 +25,7 @@ public class FormularioTest extends BaseTest {
 	}
 
 	@Test
-	public void preencherFormulario() {
+	public void devePreencherFormulario() {
 
 		formularioPage.preencherNome("Pannuvia");
 		formularioPage.selecionarCombo("Nintendo Switch");
