@@ -30,7 +30,7 @@ public class SplashTest extends BaseTest {
 		this.splashBase.aguardarSplashDesaparecer();
 		
 		//validar se aparece texto Formulário
-		assertTrue(this.menuPage.existeElementoPorTexto("Formulário"));
+		assertTrue(this.menuPage.verificarSeExisteElementoPorTexto("Formulário"));
 	}
 
 }

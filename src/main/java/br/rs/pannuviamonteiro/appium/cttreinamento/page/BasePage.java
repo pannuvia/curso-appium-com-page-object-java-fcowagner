@@ -31,11 +31,11 @@ public class BasePage {
 		getDriver().findElement(By.xpath("//android.widget.CheckedTextView[@text='"+ valor +"']")).click();
 	}
 	
-	public boolean estaMarcado(By by) {
+	public boolean verificarSeEstaMarcado(By by) {
 		return getDriver().findElement(by).getAttribute("checked").equals("true");
 	}
 	
-	public boolean existeElementoPorTexto(String texto) {
+	public boolean verificarSeExisteElementoPorTexto(String texto) {
 		List<MobileElement> elementos = getDriver().findElements(By.xpath("//*[@text='"+texto+"']"));
 		return elementos.size() > 0;
 	}

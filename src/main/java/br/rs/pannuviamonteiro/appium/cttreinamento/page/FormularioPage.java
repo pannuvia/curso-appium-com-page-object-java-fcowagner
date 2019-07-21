@@ -31,11 +31,11 @@ public class FormularioPage extends BasePage {
 	}
 
 	public boolean verificarSeCheckboxEstaMarcado() {
-		return estaMarcado(By.className("android.widget.CheckBox"));
+		return verificarSeEstaMarcado(By.className("android.widget.CheckBox"));
 	}
 
 	public boolean verificarSeSwitchEstaMarcado() {
-		return estaMarcado(MobileBy.AccessibilityId("switch"));
+		return verificarSeEstaMarcado(MobileBy.AccessibilityId("switch"));
 	}
 
 	public String capturarNomeCadastrado() {

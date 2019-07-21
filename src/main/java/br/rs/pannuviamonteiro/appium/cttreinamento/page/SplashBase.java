@@ -9,7 +9,7 @@ import br.rs.pannuviamonteiro.appium.cttreinamento.core.DriverFactory;
 public class SplashBase extends BasePage {
 
 	public boolean splashEstaVisivel() {
-		return existeElementoPorTexto("Splash!");
+		return verificarSeExisteElementoPorTexto("Splash!");
 	}
 	
 	public void aguardarSplashDesaparecer() {
