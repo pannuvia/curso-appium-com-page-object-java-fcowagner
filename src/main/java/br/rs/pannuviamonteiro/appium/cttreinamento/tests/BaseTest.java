@@ -20,12 +20,18 @@ public class BaseTest {
 	
 	@AfterClass
 	public static void finalizarDriver() {
+		
+		//fechar driver
 		DriverFactory.destroyDriver();
 	}
 	
 	@After
 	public void deveFecharDriver() {
+		 
+		//gerar screenshot no fim do teste
 		deveGerarScreenshot();
+		
+		//resetar app no fim do teste
 		DriverFactory.getDriver().resetApp();
 	}
 

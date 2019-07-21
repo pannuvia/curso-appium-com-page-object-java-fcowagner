@@ -22,19 +22,19 @@ public class FormularioPage extends BasePage {
 		return capturarTexto(By.xpath("//android.widget.Spinner/android.widget.TextView"));
 	}
 
-	public void clicarCheckBox() {
+	public void clicarNoCheckbox() {
 		clicar(By.className("android.widget.CheckBox"));
 	}
 
-	public void clicarSwitch() {
+	public void clicarNoSwitch() {
 		clicar(MobileBy.AccessibilityId("switch"));
 	}
 
-	public boolean checkEstaMarcado() {
+	public boolean verificarSeCheckboxEstaMarcado() {
 		return estaMarcado(By.className("android.widget.CheckBox"));
 	}
 
-	public boolean switchEstaMarcado() {
+	public boolean verificarSeSwitchEstaMarcado() {
 		return estaMarcado(MobileBy.AccessibilityId("switch"));
 	}
 
@@ -46,7 +46,7 @@ public class FormularioPage extends BasePage {
 		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Console:')]"));
 	}
 
-	public String capturarCheckBoxCadastrado() {
+	public String capturarCheckboxCadastrado() {
 		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Checkbox:')]"));
 	}
 
@@ -54,7 +54,7 @@ public class FormularioPage extends BasePage {
 		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Switch:')]"));
 	}
 
-	public void salvar() {
+	public void clicarEmSalvar() {
 		clicarPorTexto("SALVAR");
 	}
 }

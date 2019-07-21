@@ -21,23 +21,32 @@ public class FormularioTest extends BaseTest {
 
 	@Before
 	public void setUp() {
-		menuPage.acessarFormulario();
+		this.menuPage.acessarFormulario();
 	}
 
 	@Test
 	public void devePreencherFormulario() {
 
-		formularioPage.preencherNome("Pannuvia");
-		formularioPage.selecionarCombo("Nintendo Switch");
-		formularioPage.clicarCheckBox();
-		formularioPage.clicarSwitch();
+		//preencher o nome
+		this.formularioPage.preencherNome("Pannuvia");
+		
+		//selecionar o valor do combo
+		this.formularioPage.selecionarCombo("Nintendo Switch");
+		
+		//clicar no checkbox
+		this.formularioPage.clicarNoCheckbox();
+		
+		//clicar no switch
+		this.formularioPage.clicarNoSwitch();
 
-		formularioPage.salvar();
+		//clicar em salvar
+		this.formularioPage.clicarEmSalvar();
 
-		assertEquals("Nome: Pannuvia", formularioPage.capturarNomeCadastrado());
-		assertEquals("Console: switch", formularioPage.capturarComboCadastrado());
-		assertTrue(formularioPage.capturarCheckBoxCadastrado().endsWith("Marcado"));
-		assertTrue(formularioPage.capturarSwitchCadastrado().endsWith("Off"));
+		//validar os valores 
+		assertEquals("Nome: Pannuvia", this.formularioPage.capturarNomeCadastrado());
+		assertEquals("Console: switch", this.formularioPage.capturarComboCadastrado());
+		assertTrue(this.formularioPage.capturarCheckboxCadastrado().endsWith("Marcado"));
+		assertTrue(this.formularioPage.capturarSwitchCadastrado().endsWith("Off"));
 	}
 
 }

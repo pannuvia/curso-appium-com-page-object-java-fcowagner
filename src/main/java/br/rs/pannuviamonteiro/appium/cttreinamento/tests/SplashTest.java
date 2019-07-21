@@ -19,10 +19,18 @@ public class SplashTest extends BaseTest {
 
 	@Test
 	public void deveAguardarSplashDesaparecer() {
-		menuPage.acessarSplash();
-		splashBase.splashEstaVisivel();
-		splashBase.aguardarSplashDesaparecer();
-		assertTrue(menuPage.existeElementoPorTexto("Formulário"));
+		
+		//acessar Menu Splash
+		this.menuPage.acessarSplash();
+		
+		//verificar se Splash está visivel
+		this.splashBase.splashEstaVisivel();
+		
+		//aguardar Splash desaparecer
+		this.splashBase.aguardarSplashDesaparecer();
+		
+		//validar se aparece texto Formulário
+		assertTrue(this.menuPage.existeElementoPorTexto("Formulário"));
 	}
 
 }
