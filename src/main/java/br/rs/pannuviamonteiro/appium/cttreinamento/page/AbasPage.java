@@ -7,7 +7,7 @@ public class AbasPage extends BasePage {
 	}
 
 	public boolean verificarSeEstaNaAba1() {
-		return verificarSeExisteElementoPorTexto("Este é o conteúdo da Aba 1");
+		return verificarSeExisteElementoComOTexto("Este é o conteúdo da Aba 1");
 	}
 
 	public void clicarEmAba2() {
@@ -15,6 +15,6 @@ public class AbasPage extends BasePage {
 	}
 
 	public boolean verificarSeEstaNaAba2() {
-		 return verificarSeExisteElementoPorTexto("Este é o conteúdo da Aba 2");
+		 return verificarSeExisteElementoComOTexto("Este é o conteúdo da Aba 2");
 	}
 }

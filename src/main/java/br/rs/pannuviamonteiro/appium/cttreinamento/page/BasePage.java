@@ -35,7 +35,7 @@ public class BasePage {
 		return getDriver().findElement(by).getAttribute("checked").equals("true");
 	}
 	
-	public boolean verificarSeExisteElementoPorTexto(String texto) {
+	public boolean verificarSeExisteElementoComOTexto(String texto) {
 		List<MobileElement> elementos = getDriver().findElements(By.xpath("//*[@text='"+texto+"']"));
 		return elementos.size() > 0;
 	}
