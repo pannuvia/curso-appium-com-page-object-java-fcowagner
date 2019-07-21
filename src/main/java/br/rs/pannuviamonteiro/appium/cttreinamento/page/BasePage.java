@@ -1,11 +1,11 @@
-package br.rs.pannuviamonteiro.appium.cttreinamento.core;
+package br.rs.pannuviamonteiro.appium.cttreinamento.page;
 
 import static br.rs.pannuviamonteiro.appium.cttreinamento.core.DriverFactory.getDriver;
 
 import org.openqa.selenium.By;
 
-public class DSL {
-
+public class BasePage {
+	
 	public void preencherTextField(By by, String texto) {
 		getDriver().findElement(by).sendKeys(texto);
 	}
@@ -31,7 +31,4 @@ public class DSL {
 		return getDriver().findElement(by).getAttribute("checked").equals("true");
 	}
 	
-
-
-
 }
