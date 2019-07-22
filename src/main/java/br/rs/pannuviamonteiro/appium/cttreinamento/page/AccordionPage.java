@@ -14,9 +14,9 @@ public class AccordionPage extends BasePage {
 		clicarPorTexto("Opção 3");
 	}
 
-	public boolean verificarSeEstaNaOpcao2() {
+	public boolean verificarSeEstaNaOpcao3() {
 		return verificarSeExisteElementoComOTexto(
-				"Esta é a descrição da opção 3. Que pode, inclusive ter mais de uma linha");
+				"Esta é a descrição da opção 3. Que pode, inclusive ter mais que uma linha");
 	}
 
 }

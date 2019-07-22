@@ -29,6 +29,10 @@ public class FormularioPage extends BasePage {
 	public void clicarNoSwitch() {
 		clicar(MobileBy.AccessibilityId("switch"));
 	}
+	
+	public void clicarNoDataPicker(String data) {
+		clicar(By.xpath("//android.widget.TextView[@text='"+data+"']"));
+	}
 
 	public boolean verificarSeCheckboxEstaMarcado() {
 		return verificarSeEstaMarcado(By.className("android.widget.CheckBox"));
@@ -54,6 +58,10 @@ public class FormularioPage extends BasePage {
 		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Switch:')]"));
 	}
 
+	public String capturarDataCadastrada() {
+		return capturarTexto(By.xpath("//android.view.ViewGroup/android.widget.TextView[@text='20/2/2000']"));
+	}
+	
 	public void clicarEmSalvar() {
 		clicarPorTexto("SALVAR");
 	}

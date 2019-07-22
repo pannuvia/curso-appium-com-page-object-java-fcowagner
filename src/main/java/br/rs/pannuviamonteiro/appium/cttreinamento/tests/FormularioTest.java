@@ -14,6 +14,7 @@ public class FormularioTest extends BaseTest {
 	private MenuPage menuPage;
 	private FormularioPage formularioPage;
 
+
 	public FormularioTest() {
 		this.menuPage = new MenuPage();
 		this.formularioPage = new FormularioPage();
@@ -38,7 +39,16 @@ public class FormularioTest extends BaseTest {
 		
 		//clicar no switch
 		this.formularioPage.clicarNoSwitch();
-
+		
+		//clicar no datapicker
+		this.formularioPage.clicarNoDataPicker("01/01/2000");
+		
+		//selecionar dia
+		this.formularioPage.clicarPorTexto("20");
+		
+		//clicar em OK
+		this.formularioPage.clicarPorTexto("OK");
+		
 		//clicar em salvar
 		this.formularioPage.clicarEmSalvar();
 
@@ -47,6 +57,7 @@ public class FormularioTest extends BaseTest {
 		assertEquals("Console: switch", this.formularioPage.capturarComboCadastrado());
 		assertTrue(this.formularioPage.capturarCheckboxCadastrado().endsWith("Marcado"));
 		assertTrue(this.formularioPage.capturarSwitchCadastrado().endsWith("Off"));
+		assertEquals("20/2/2000", this.formularioPage.capturarDataCadastrada());
 	}
 
 }
