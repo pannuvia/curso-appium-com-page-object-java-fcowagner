@@ -31,7 +31,19 @@ public class FormularioPage extends BasePage {
 	}
 	
 	public void clicarNoDataPicker(String data) {
-		clicar(By.xpath("//android.widget.TextView[@text='"+data+"']"));
+		clicar(By.xpath("//android.widget.TextView[@text='"+ data +"']"));
+	}
+	
+	public void clicarNoTimePicker(String horario) {
+		clicar(By.xpath("//android.widget.TextView[@text='"+ horario +"']"));
+	}
+	
+	public void clicarNaHora(String hora) {
+		clicar(MobileBy.AccessibilityId(hora));
+	}
+	
+	public void clicarNosMinutos(String minutos) {
+		clicar(MobileBy.AccessibilityId(minutos));
 	}
 
 	public boolean verificarSeCheckboxEstaMarcado() {
@@ -58,10 +70,6 @@ public class FormularioPage extends BasePage {
 		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Switch:')]"));
 	}
 
-	public String capturarDataCadastrada() {
-		return capturarTexto(By.xpath("//android.view.ViewGroup/android.widget.TextView[@text='20/2/2000']"));
-	}
-	
 	public void clicarEmSalvar() {
 		clicarPorTexto("SALVAR");
 	}

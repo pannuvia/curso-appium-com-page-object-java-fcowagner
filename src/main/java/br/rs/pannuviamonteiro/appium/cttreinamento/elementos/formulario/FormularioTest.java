@@ -46,11 +46,13 @@ public class FormularioTest {
 	
 	@Test
 	public void preencherFormulario() {
+		
 		// preencher textfield
 		driver.findElement(MobileBy.AccessibilityId("nome")).sendKeys("Pannuvia");
 
 		// clicar na combo
 		driver.findElement(MobileBy.AccessibilityId("console")).click();
+		
 		// selecionar a opção desejada
 		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Nintendo Switch']")).click();
 
@@ -66,6 +68,18 @@ public class FormularioTest {
 		// selecionar o dia
 		driver.findElement(By.xpath("//android.view.View[@text='20']")).click();
 
+		// clicar em OK
+		driver.findElement(By.xpath("//android.widget.Button[@text='OK']")).click();
+		
+		// clicar no horario
+		driver.findElement(By.xpath("//android.widget.TextView[@text='06:00']")).click();
+		
+		//clicar na hora
+		driver.findElement(MobileBy.AccessibilityId("16")).click();
+		
+		// clicar nos minutos
+		driver.findElement(MobileBy.AccessibilityId("35")).click();
+		
 		// clicar em OK
 		driver.findElement(By.xpath("//android.widget.Button[@text='OK']")).click();
 		
@@ -93,7 +107,12 @@ public class FormularioTest {
 		// validar data selecionada
 		String dataSelecionada = driver.findElement(By.xpath("//android.view.ViewGroup/android.widget.TextView[@text='20/2/2000']")).getText();
 		Assert.assertEquals("20/2/2000", dataSelecionada);
+		
+		// validar horario selecionado
+		String horarioSelecionado = driver.findElement(By.xpath("//android.view.ViewGroup/android.widget.TextView[@text='16:35']")).getText();
+		Assert.assertEquals("20/2/2000", dataSelecionada);
 	}
+	
 
 	@After
 	public void fecharDriver() {

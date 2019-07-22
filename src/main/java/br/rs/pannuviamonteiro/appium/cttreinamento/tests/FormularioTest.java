@@ -28,17 +28,60 @@ public class FormularioTest extends BaseTest {
 	@Test
 	public void devePreencherFormulario() {
 
-		//preencher o nome
+		//preencher nome
 		this.formularioPage.preencherNome("Pannuvia");
-		
+
 		//selecionar o valor do combo
 		this.formularioPage.selecionarCombo("Nintendo Switch");
-		
+
 		//clicar no checkbox
 		this.formularioPage.clicarNoCheckbox();
-		
+
 		//clicar no switch
 		this.formularioPage.clicarNoSwitch();
+		
+		devePreencherData();
+		
+		devePreencherHorario();
+					
+		//clicar em salvar
+		this.formularioPage.clicarEmSalvar();
+		
+		//validar nome preenchido
+		assertEquals("Nome: Pannuvia", this.formularioPage.capturarNomeCadastrado());
+		
+		//validar valor do combo
+		assertEquals("Console: switch", this.formularioPage.capturarComboCadastrado());
+		
+		//validar se checkbox está marcado
+		assertTrue(this.formularioPage.capturarCheckboxCadastrado().endsWith("Marcado"));
+		
+		//validar se switch foi desligado
+		assertTrue(this.formularioPage.capturarSwitchCadastrado().endsWith("Off"));
+			
+		//validar data preenchida
+		assertTrue(this.formularioPage.verificarSeExisteElementoComOTexto("20/2/2000"));
+		
+      	//validar horario preenchido
+    	assertTrue(this.formularioPage.verificarSeExisteElementoComOTexto("16:35"));
+	}
+	
+	private void devePreencherHorario() {
+		
+		//clicar no timepicker
+		this.formularioPage.clicarNoTimePicker("06:00");
+		
+		//selecionar hora
+		this.formularioPage.clicarNaHora("16");
+				
+		//selecionar minutos
+		this.formularioPage.clicarNosMinutos("35");
+		
+		//clicar em OK
+		this.formularioPage.clicarPorTexto("OK");
+	}
+
+	private void devePreencherData() {
 		
 		//clicar no datapicker
 		this.formularioPage.clicarNoDataPicker("01/01/2000");
@@ -48,16 +91,6 @@ public class FormularioTest extends BaseTest {
 		
 		//clicar em OK
 		this.formularioPage.clicarPorTexto("OK");
-		
-		//clicar em salvar
-		this.formularioPage.clicarEmSalvar();
-
-		//validar os valores 
-		assertEquals("Nome: Pannuvia", this.formularioPage.capturarNomeCadastrado());
-		assertEquals("Console: switch", this.formularioPage.capturarComboCadastrado());
-		assertTrue(this.formularioPage.capturarCheckboxCadastrado().endsWith("Marcado"));
-		assertTrue(this.formularioPage.capturarSwitchCadastrado().endsWith("Off"));
-		assertEquals("20/2/2000", this.formularioPage.capturarDataCadastrada());
-	}
-
+	}		
+	
 }
