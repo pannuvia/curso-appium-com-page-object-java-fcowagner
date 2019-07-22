@@ -32,12 +32,11 @@ public class AlertasPage extends BasePage {
 		clicarPorTexto("CONFIRMAR");
 	}
 	
-	public void clicarEmOK() {
-		clicarPorTexto("OK");
+	public void clicarNaCoordenada() {
+		clicarNumaCoordenada(100, 150);
 	}
-
+	
 	public void clicarEmSair() {
 		clicarPorTexto("SAIR");
-		
 	}
 }
