@@ -1,4 +1,4 @@
-package br.rs.pannuviamonteiro.appium.cttreinamento.page;
+package br.rs.pannuviamonteiro.appium.cttreinamento.pages;
 
 import org.openqa.selenium.By;
 

@@ -4,8 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import br.rs.pannuviamonteiro.appium.cttreinamento.page.MenuPage;
-import br.rs.pannuviamonteiro.appium.cttreinamento.page.SplashBase;
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.MenuPage;
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.SplashBase;
 
 public class SplashTest extends BaseTest {
 

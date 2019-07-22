@@ -4,8 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import br.rs.pannuviamonteiro.appium.cttreinamento.page.AbasPage;
-import br.rs.pannuviamonteiro.appium.cttreinamento.page.MenuPage;
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.AbasPage;
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.MenuPage;
 
 public class AbasTest extends BaseTest {
 

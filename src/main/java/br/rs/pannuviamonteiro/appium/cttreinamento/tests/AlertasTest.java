@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.rs.pannuviamonteiro.appium.cttreinamento.page.AlertasPage;
-import br.rs.pannuviamonteiro.appium.cttreinamento.page.MenuPage;
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.AlertasPage;
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.MenuPage;
 
 public class AlertasTest extends BaseTest {
 

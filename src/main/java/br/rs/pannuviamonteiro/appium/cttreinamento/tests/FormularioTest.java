@@ -6,8 +6,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.rs.pannuviamonteiro.appium.cttreinamento.page.FormularioPage;
-import br.rs.pannuviamonteiro.appium.cttreinamento.page.MenuPage;
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.FormularioPage;
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.MenuPage;
 
 public class FormularioTest extends BaseTest {
 
