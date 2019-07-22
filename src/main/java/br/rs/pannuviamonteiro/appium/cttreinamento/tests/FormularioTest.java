@@ -29,11 +29,14 @@ public class FormularioTest extends BaseTest {
 	public void devePreencherFormulario() {
 
 		//preencher nome
-		this.formularioPage.preencherNome("Pannuvia");
+		this.formularioPage.preencherTextFieldNome("Pannuvia");
 
 		//selecionar o valor do combo
-		this.formularioPage.selecionarCombo("Nintendo Switch");
+		this.formularioPage.selecionarValorNoCombo("Nintendo Switch");
 
+		//clicar no seekbar
+		this.formularioPage.clicarNoSeekBar(0.65);
+		
 		//clicar no checkbox
 		this.formularioPage.clicarNoCheckbox();
 
@@ -48,16 +51,19 @@ public class FormularioTest extends BaseTest {
 		this.formularioPage.clicarEmSalvar();
 		
 		//validar nome preenchido
-		assertEquals("Nome: Pannuvia", this.formularioPage.capturarNomeCadastrado());
+		assertEquals("Nome: Pannuvia", this.formularioPage.capturarNomeAposSalvar());
 		
 		//validar valor do combo
-		assertEquals("Console: switch", this.formularioPage.capturarComboCadastrado());
+		assertEquals("Console: switch", this.formularioPage.capturarComboAposSalvar());
 		
+		//validar valor do seekbar
+		assertEquals("Slider: 67", this.formularioPage.capturarSeekBarAposSalvar());
+				
 		//validar se checkbox está marcado
-		assertTrue(this.formularioPage.capturarCheckboxCadastrado().endsWith("Marcado"));
+		assertTrue(this.formularioPage.capturarCheckboxAposSalvar().endsWith("Marcado"));
 		
 		//validar se switch foi desligado
-		assertTrue(this.formularioPage.capturarSwitchCadastrado().endsWith("Off"));
+		assertTrue(this.formularioPage.capturarSwitchAposSalvar().endsWith("Off"));
 			
 		//validar data preenchida
 		assertTrue(this.formularioPage.verificarSeExisteElementoComOTexto("20/2/2000"));
