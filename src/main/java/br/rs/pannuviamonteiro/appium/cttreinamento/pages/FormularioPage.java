@@ -1,27 +1,34 @@
 package br.rs.pannuviamonteiro.appium.cttreinamento.pages;
 
+import static br.rs.pannuviamonteiro.appium.cttreinamento.core.DriverFactory.getDriver;
+
 import org.openqa.selenium.By;
 
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 
 public class FormularioPage extends BasePage {
 
-	public void preencherNome(String nome) {
+	public void preencherTextFieldNome(String nome) {
 		preencherTextField(MobileBy.AccessibilityId("nome"), nome);
 	}
 
-	public String capturarNome() {
-		return capturarTexto(MobileBy.AccessibilityId("nome"));
-	}
-
-	public void selecionarCombo(String combo) {
+	public void selecionarValorNoCombo(String combo) {
 		selecionarCombo(MobileBy.AccessibilityId("console"), combo);
 	}
 
-	public String capturarCombo() {
-		return capturarTexto(By.xpath("//android.widget.Spinner/android.widget.TextView"));
+	public void clicarNoSeekBar(double posicaoClicada) {
+		MobileElement seekbar = getDriver().findElement((MobileBy.AccessibilityId("slid")));
+		
+		int yInicial = seekbar.getLocation().y + (seekbar.getSize().height / 2);
+		System.out.println(yInicial);
+		
+		int xInicial = (int) (seekbar.getLocation().x + (seekbar.getSize().width * posicaoClicada));
+		System.out.println(xInicial);
+		
+		clicarNumaCoordenada(xInicial, yInicial);
 	}
-
+	
 	public void clicarNoCheckbox() {
 		clicar(By.className("android.widget.CheckBox"));
 	}
@@ -54,20 +61,24 @@ public class FormularioPage extends BasePage {
 		return verificarSeEstaMarcado(MobileBy.AccessibilityId("switch"));
 	}
 
-	public String capturarNomeCadastrado() {
+	public String capturarNomeAposSalvar() {
 		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Nome:')]"));
 	}
 
-	public String capturarComboCadastrado() {
+	public String capturarComboAposSalvar() {
 		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Console:')]"));
 	}
 
-	public String capturarCheckboxCadastrado() {
+	public String capturarCheckboxAposSalvar() {
 		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Checkbox:')]"));
 	}
 
-	public String capturarSwitchCadastrado() {
+	public String capturarSwitchAposSalvar() {
 		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Switch:')]"));
+	}
+	
+	public String capturarSeekBarAposSalvar() {
+		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Slider:')]"));
 	}
 
 	public void clicarEmSalvar() {

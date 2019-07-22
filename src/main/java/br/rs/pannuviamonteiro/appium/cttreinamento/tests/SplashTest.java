@@ -24,7 +24,7 @@ public class SplashTest extends BaseTest {
 		this.menuPage.acessarSplash();
 		
 		//verificar se Splash está visivel
-		this.splashBase.splashEstaVisivel();
+		this.splashBase.verificarSeSplashEstaVisivel();
 		
 		//aguardar Splash desaparecer
 		this.splashBase.aguardarSplashDesaparecer();
