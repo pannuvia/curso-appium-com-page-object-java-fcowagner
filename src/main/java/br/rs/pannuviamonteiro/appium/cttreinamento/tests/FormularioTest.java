@@ -57,7 +57,7 @@ public class FormularioTest extends BaseTest {
 		assertEquals("Console: switch", this.formularioPage.capturarComboAposSalvar());
 		
 		//validar valor do seekbar
-		assertEquals("Slider: 67", this.formularioPage.capturarSeekBarAposSalvar());
+		assertEquals("Slider: 65", this.formularioPage.capturarSeekBarAposSalvar());
 				
 		//validar se checkbox está marcado
 		assertTrue(this.formularioPage.capturarCheckboxAposSalvar().endsWith("Marcado"));

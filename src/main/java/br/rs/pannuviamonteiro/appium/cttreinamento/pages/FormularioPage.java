@@ -18,12 +18,15 @@ public class FormularioPage extends BasePage {
 	}
 
 	public void clicarNoSeekBar(double posicaoClicada) {
+		
+		int delta = 50;
+		
 		MobileElement seekbar = getDriver().findElement((MobileBy.AccessibilityId("slid")));
 		
 		int yInicial = seekbar.getLocation().y + (seekbar.getSize().height / 2);
 		System.out.println(yInicial);
 		
-		int xInicial = (int) (seekbar.getLocation().x + (seekbar.getSize().width * posicaoClicada));
+		int xInicial = (int) ((seekbar.getLocation().x) + delta + ((seekbar.getSize().width - 2 * delta) * posicaoClicada));
 		System.out.println(xInicial);
 		
 		clicarNumaCoordenada(xInicial, yInicial);
