@@ -4,12 +4,24 @@ import org.openqa.selenium.By;
 
 public class AlertasPage extends BasePage {
 
-	public void clicarEmAlertConfirm() {
+	public void clicarEmAlertaConfirm() {
 		clicarPorTexto("ALERTA CONFIRM");
+	}
+	
+	public void clicarEmAlertaSimples() {
+		clicarPorTexto("ALERTA SIMPLES");
+	}
+	
+	public void clicarEmAlertaRestritivo() {
+		clicarPorTexto("ALERTA RESTRITIVO");
 	}
 	
 	public String capturarTituloDoAlerta() {
 		return capturarTexto(By.id("android:id/alertTitle"));
+	}
+	
+	public String capturarTipoDeAlerta(String tipoAlerta) {
+		return capturarTexto(By.xpath("//*[@text='"+ tipoAlerta +"']"));
 	}
 	
 	public String capturarMensagemDoAlerta() {
@@ -18,6 +30,10 @@ public class AlertasPage extends BasePage {
 	
 	public void clicarEmConfirmar() {
 		clicarPorTexto("CONFIRMAR");
+	}
+	
+	public void clicarEmOK() {
+		clicarPorTexto("OK");
 	}
 
 	public void clicarEmSair() {
