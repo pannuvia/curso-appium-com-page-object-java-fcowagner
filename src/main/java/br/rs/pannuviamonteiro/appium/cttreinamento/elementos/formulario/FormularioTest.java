@@ -22,7 +22,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 public class FormularioTest {
 
 	private AndroidDriver<MobileElement> driver;
-	
+
 	@Before
 	public void inicializarAppium() {
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -33,17 +33,16 @@ public class FormularioTest {
 				"D:\\DBSERVER\\BACKUP PROJETOS\\eclipse-workspace\\curso-appium-java-fcowagner\\src\\main\\resources\\CTAppium-1-1.apk");
 
 		try {
-			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
-					desiredCapabilities);
+			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), desiredCapabilities);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
+
 		// clicar em Formulário
 		driver.findElement(By.xpath("//*[@text='Formulário']")).click();
 	}
-	
+
 	@Test
 	public void preencherFormulario() {
 		
@@ -55,7 +54,10 @@ public class FormularioTest {
 		
 		// selecionar a opção desejada
 		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Nintendo Switch']")).click();
-
+		
+		//clicar no seekbar
+		driver.findElement(MobileBy.AccessibilityId("slid")).click();
+		
 		// clicar no checkBox
 		driver.findElement(By.className("android.widget.CheckBox")).click();
 
@@ -93,6 +95,10 @@ public class FormularioTest {
 		// validar combo
 		MobileElement combo = driver.findElement(By.xpath("//android.widget.TextView[starts-with(@text, 'Console:')]"));
 		assertEquals("Console: switch", combo.getText());
+		
+		//validar seekbar
+		MobileElement seekbar = driver.findElement(By.xpath("//android.widget.TextView[starts-with(@text, 'Slider:')]"));
+		assertTrue(seekbar.getText().endsWith("51"));
 
 		// validar checkbox
 		MobileElement checkbox = driver
@@ -110,9 +116,8 @@ public class FormularioTest {
 		
 		// validar horario selecionado
 		String horarioSelecionado = driver.findElement(By.xpath("//android.view.ViewGroup/android.widget.TextView[@text='16:35']")).getText();
-		Assert.assertEquals("20/2/2000", dataSelecionada);
+		Assert.assertEquals("16:35", horarioSelecionado);
 	}
-	
 
 	@After
 	public void fecharDriver() {
