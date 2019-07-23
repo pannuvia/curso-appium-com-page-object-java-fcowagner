@@ -29,13 +29,13 @@ public class ScrollTest extends BaseTest{
 		basePage.realizarScrollGenerico(0.9, 0.1);
 		
 		//clicar no menu Opção bem escondida
-		basePage.clicarNoTexto("Opção bem escondida");
+		basePage.clicarNoTextoDoElementoPorXpath("Opção bem escondida");
 		
 		//verificar se apareceu a mensagem Você achou essa opção
 		assertEquals("Você achou essa opção", basePage.capturarMensagemDoAlerta());
 		
 		//clicar em OK
-		basePage.clicarNoTexto("OK");
+		basePage.clicarNoTextoDoElementoPorXpath("OK");
 	}
 
 }

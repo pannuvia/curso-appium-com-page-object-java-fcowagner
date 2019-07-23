@@ -5,15 +5,15 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import br.rs.pannuviamonteiro.appium.cttreinamento.pages.AbasPage;
-import br.rs.pannuviamonteiro.appium.cttreinamento.pages.MenuPage;
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.BasePage;
 
 public class AbasTest extends BaseTest {
 
-	private MenuPage menuPage;
+	private BasePage basePage;
 	private AbasPage abasPage;
 	
 	public AbasTest() {
-		this.menuPage = new MenuPage();
+		this.basePage = new BasePage();
 		this.abasPage = new AbasPage();
 	}
 	
@@ -21,7 +21,7 @@ public class AbasTest extends BaseTest {
 	public void deveNavegarEntreAbas() {
 		
 		//acessar menu Abas
-		this.menuPage.acessarAbas();
+		this.basePage.clicarNoTextoDoElementoPorXpath("Abas");
 		
 		//validar se texto Este é o conteúdo da Aba 1 está aparecendo
 		assertTrue("Este é o conteúdo da Aba 1", this.abasPage.verificarSeEstaNaAba1());

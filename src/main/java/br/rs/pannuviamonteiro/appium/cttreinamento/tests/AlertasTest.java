@@ -6,16 +6,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.rs.pannuviamonteiro.appium.cttreinamento.pages.BasePage;
-import br.rs.pannuviamonteiro.appium.cttreinamento.pages.MenuPage;
 
 public class AlertasTest extends BaseTest {
 
-	private MenuPage menuPage;
 	private BasePage basePage;
 	
 	public AlertasTest() {	
 		 this.basePage = new BasePage();
-		 this.menuPage = new MenuPage();
 	}
 		
 	@Before
@@ -27,15 +24,14 @@ public class AlertasTest extends BaseTest {
 		}
 		
 		//acessar menu Alertas
-
+		this.basePage.clicarNoTextoDoElementoPorXpath("Alertas");
 	}
 	
 	@Test
 	public void deveConfirmarAlertaSimples() {
 		
-		this.menuPage.acessarAlertas();
 		//clicar em Alert Simples
-		this.basePage.clicarNoTexto("ALERTA SIMPLES");
+		this.basePage.clicarNoTextoDoElementoPorXpath("ALERTA SIMPLES");
 		
 		//validar se o titulo Info apareceu
 		assertEquals("Info", this.basePage.capturarTituloDoAlerta());
@@ -53,9 +49,8 @@ public class AlertasTest extends BaseTest {
 	@Test
 	public void deveConfirmarAlertaConfirm() {
 		
-		this.menuPage.acessarAlertas();
 		//clicar em Alerta Confirm
-		this.basePage.clicarNoTexto("ALERTA CONFIRM");
+		this.basePage.clicarNoTextoDoElementoPorXpath("ALERTA CONFIRM");
 		
 		//validar se o titulo Info apareceu
 		assertEquals("Info", this.basePage.capturarTituloDoAlerta());
@@ -64,22 +59,20 @@ public class AlertasTest extends BaseTest {
 		assertEquals("Confirma a operação?", this.basePage.capturarMensagemDoAlerta());
 		
 		//clicar em confirmar
-		this.basePage.clicarNoTexto("CONFIRMAR");
+		this.basePage.clicarNoTextoDoElementoPorXpath("CONFIRMAR");
 		
 		//validar se a mensagem Confirmado apareceu
 		assertEquals("Confirmado", this.basePage.capturarMensagemDoAlerta());
 		
 		//clicar em sair
-		this.basePage.clicarNoTexto("SAIR");
+		this.basePage.clicarNoTextoDoElementoPorXpath("SAIR");
 	}
 
-	
 	@Test
 	public void deveConfirmarAlertaRestritivo() {
 
-		this.menuPage.acessarAlertas();
 		//clicar em Alerta Restritivo
-		this.basePage.clicarNoTexto("ALERTA RESTRITIVO");
+		this.basePage.clicarNoTextoDoElementoPorXpath("ALERTA RESTRITIVO");
 		
 		//validar se o titulo Info apareceu
 		assertEquals("Info", this.basePage.capturarTituloDoAlerta());
@@ -88,7 +81,7 @@ public class AlertasTest extends BaseTest {
 		assertEquals("Não pode clicar fora, apenas no SAIR", this.basePage.capturarMensagemDoAlerta());
 			
 		//clicar em sair
-		this.basePage.clicarNoTexto("SAIR");
+		this.basePage.clicarNoTextoDoElementoPorXpath("SAIR");
 		
 		//validar se texto Alerta Restritivo apareceu
 		assertEquals("ALERTA RESTRITIVO", this.basePage.capturarTipoDeAlerta("ALERTA RESTRITIVO"));

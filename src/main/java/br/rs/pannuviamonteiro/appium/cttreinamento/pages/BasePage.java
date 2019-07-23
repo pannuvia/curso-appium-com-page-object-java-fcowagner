@@ -13,16 +13,29 @@ import io.appium.java_client.TouchAction;
 
 public class BasePage {
 
-	public void preencherTextField(By by, String texto) {
+	public void preencherCampo(By by, String texto) {
 		getDriver().findElement(by).sendKeys(texto);
-	}
-
-	public String capturarTexto(By by) {
-		return getDriver().findElement(by).getText();
 	}
 
 	public void clicar(By by) {
 		getDriver().findElement(by).click();
+	}
+	
+	public void clicarNoTextoDoElementoPorXpath(String textoDoElemento) {
+		clicar(By.xpath("//*[@text='" + textoDoElemento + "']"));
+	}
+
+	public void clicarNoCombo(By by, String valor) {
+		getDriver().findElement(by).click();
+		getDriver().findElement(By.xpath("//android.widget.CheckedTextView[@text='" + valor + "']")).click();
+	}
+
+	public void clicarNumaCoordenada(int x, int y) {
+		new TouchAction(getDriver()).tap(x, y).perform();
+	}
+		
+	public String capturarTexto(By by) {
+		return getDriver().findElement(by).getText();
 	}
 	
 	public String capturarTituloDoAlerta() {
@@ -37,26 +50,13 @@ public class BasePage {
 		return capturarTexto(By.id("android:id/message"));
 	}
 
-	public void clicarNoTexto(String texto) {
-		clicar(By.xpath("//*[@text='" + texto + "']"));
-	}
-
-	public void selecionarCombo(By by, String valor) {
-		getDriver().findElement(by).click();
-		getDriver().findElement(By.xpath("//android.widget.CheckedTextView[@text='" + valor + "']")).click();
-	}
-
-	public boolean verificarSeEstaMarcado(By by) {
+	public boolean validarSeEstaMarcado(By by) {
 		return getDriver().findElement(by).getAttribute("checked").equals("true");
 	}
 
-	public boolean verificarSeExisteElementoComOTexto(String texto) {
+	public boolean validarSeExisteElementoPorXpathComOTexto(String texto) {
 		List<MobileElement> elementos = getDriver().findElements(By.xpath("//*[@text='" + texto + "']"));
 		return elementos.size() > 0;
-	}
-
-	public void clicarNumaCoordenada(int x, int y) {
-		new TouchAction(getDriver()).tap(x, y).perform();
 	}
 
 	public void realizarScrollGenerico(double pontoInicial, double pontoFinal) {
@@ -71,6 +71,22 @@ public class BasePage {
 			.press(posicaoX, posicaoYInicial)
 			.waitAction(Duration.ofMillis(500))
 			.moveTo(posicaoX, posicaoYFinal)
+			.release()
+			.perform();
+	}
+	
+	public void realizarSwipeGenerico(double pontoInicial, double pontoFinal) {
+		Dimension size = getDriver().manage().window().getSize();
+
+		int posicaoY = size.height / 2;
+
+		int posicaoXInicial = (int) (size.width * pontoInicial);
+		int posicaoXFinal = (int) (size.width * pontoFinal);
+
+		new TouchAction(getDriver())
+			.press(posicaoXInicial, posicaoY)
+			.waitAction(Duration.ofMillis(500))
+			.moveTo(posicaoXFinal, posicaoY)
 			.release()
 			.perform();
 	}

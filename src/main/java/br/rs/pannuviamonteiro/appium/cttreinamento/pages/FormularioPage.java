@@ -10,11 +10,11 @@ import io.appium.java_client.MobileElement;
 public class FormularioPage extends BasePage {
 
 	public void preencherTextFieldNome(String nome) {
-		preencherTextField(MobileBy.AccessibilityId("nome"), nome);
+		preencherCampo(MobileBy.AccessibilityId("nome"), nome);
 	}
 
 	public void selecionarValorNoCombo(String combo) {
-		selecionarCombo(MobileBy.AccessibilityId("console"), combo);
+		clicarNoCombo(MobileBy.AccessibilityId("console"), combo);
 	}
 
 	public void clicarNoSeekBar(double posicaoClicada) {
@@ -57,11 +57,11 @@ public class FormularioPage extends BasePage {
 	}
 
 	public boolean verificarSeCheckboxEstaMarcado() {
-		return verificarSeEstaMarcado(By.className("android.widget.CheckBox"));
+		return validarSeEstaMarcado(By.className("android.widget.CheckBox"));
 	}
 
 	public boolean verificarSeSwitchEstaMarcado() {
-		return verificarSeEstaMarcado(MobileBy.AccessibilityId("switch"));
+		return validarSeEstaMarcado(MobileBy.AccessibilityId("switch"));
 	}
 
 	public String capturarNomeAposSalvar() {
@@ -85,6 +85,6 @@ public class FormularioPage extends BasePage {
 	}
 
 	public void clicarEmSalvar() {
-		clicarNoTexto("SALVAR");
+		clicarNoTextoDoElementoPorXpath("SALVAR");
 	}
 }

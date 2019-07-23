@@ -5,22 +5,22 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.BasePage;
 import br.rs.pannuviamonteiro.appium.cttreinamento.pages.CliquesPage;
-import br.rs.pannuviamonteiro.appium.cttreinamento.pages.MenuPage;
 
 public class CliquesTest extends BaseTest {
 
-	private MenuPage menuPage;
+	private BasePage basePage;
 	private CliquesPage cliquesPage;
 	
 	public CliquesTest() {
-		this.menuPage = new MenuPage();
+		this.basePage = new BasePage();
 		this.cliquesPage = new CliquesPage();
 	}
 	
 	@Before
 	public void setUp() {
-		menuPage.acessarCliques();
+		basePage.clicarNoTextoDoElementoPorXpath("Cliques");
 	}
 	
 	@Test
@@ -37,8 +37,8 @@ public class CliquesTest extends BaseTest {
 	public void deveRealizarCliqueDuplo() {
 				
 		//clicar duas vezes no Clique duplo
-		menuPage.clicarNoTexto("Clique duplo");
-		menuPage.clicarNoTexto("Clique duplo");
+		basePage.clicarNoTextoDoElementoPorXpath("Clique duplo");
+		basePage.clicarNoTextoDoElementoPorXpath("Clique duplo");
 		
 		//validar se apareceu o texto Duplo Clique
 		assertEquals("Duplo Clique", cliquesPage.capturarTextoAposClicar());
