@@ -74,6 +74,14 @@ public class BasePage {
 			.release()
 			.perform();
 	}
+		
+	public void realizarScrollDown(double pontoAbaixo, double pontoAcima) {
+		realizarScrollGenerico(pontoAbaixo, pontoAcima);
+	}
+	
+	public void realizarScrollUp(double pontoAcima, double pontoAbaixo) {
+		realizarScrollGenerico(pontoAbaixo, pontoAbaixo);
+	}
 	
 	public void realizarSwipeGenerico(double pontoInicial, double pontoFinal) {
 		Dimension size = getDriver().manage().window().getSize();
@@ -91,4 +99,11 @@ public class BasePage {
 			.perform();
 	}
 	
+	public void realizarSwipeRight(double pontoEsquerda, double pontoDireita) {
+		realizarScrollGenerico(pontoEsquerda, pontoDireita);
+	}
+	
+	public void realizarSwipeLeft(double pontoDireita, double pontoEsquerda) {
+		realizarScrollGenerico(pontoDireita, pontoEsquerda);
+	}
 }

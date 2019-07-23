@@ -20,14 +20,12 @@ public class FormularioTest extends BaseTest {
 		this.formularioPage = new FormularioPage();
 	}
 
-	@Before
-	public void setUp() {
-		this.basePage.clicarNoTextoDoElementoPorXpath("Formulário");
-	}
-
 	@Test
 	public void devePreencherFormulario() {
 
+		//acessar menu Formulário
+		this.basePage.clicarNoTextoDoElementoPorXpath("Formulário");
+		
 		//preencher nome
 		this.formularioPage.preencherTextFieldNome("Pannuvia");
 
