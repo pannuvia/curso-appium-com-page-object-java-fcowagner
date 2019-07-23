@@ -25,18 +25,22 @@ public class CliquesTest extends BaseTest {
 	
 	@Test
 	public void deveRealizarCliqueLongo() {
-				
+		
+		//clicar no Clique Longo
 		cliquesPage.clicarEmCliqueLongo();
 		
+		//validar se apareceu o texto Clique Longo
 		assertEquals("Clique Longo", cliquesPage.capturarTextoAposClicar());
 	}
 	
 	@Test
 	public void deveRealizarCliqueDuplo() {
 				
-		menuPage.clicarPorTexto("Clique duplo");
-		menuPage.clicarPorTexto("Clique duplo");
+		//clicar duas vezes no Clique duplo
+		menuPage.clicarNoTexto("Clique duplo");
+		menuPage.clicarNoTexto("Clique duplo");
 		
+		//validar se apareceu o texto Duplo Clique
 		assertEquals("Duplo Clique", cliquesPage.capturarTextoAposClicar());
 	}
 }

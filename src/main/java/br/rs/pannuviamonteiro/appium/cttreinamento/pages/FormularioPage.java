@@ -85,6 +85,6 @@ public class FormularioPage extends BasePage {
 	}
 
 	public void clicarEmSalvar() {
-		clicarPorTexto("SALVAR");
+		clicarNoTexto("SALVAR");
 	}
 }

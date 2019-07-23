@@ -3,7 +3,7 @@ package br.rs.pannuviamonteiro.appium.cttreinamento.pages;
 public class AccordionPage extends BasePage {
 
 	public void clicarNaOpcao1() {
-		clicarPorTexto("Opção 1");
+		clicarNoTexto("Opção 1");
 	}
 
 	public boolean verificarSeEstaNaOpcao1() {
@@ -11,7 +11,7 @@ public class AccordionPage extends BasePage {
 	}
 	
 	public void clicarNaOpcao3() {
-		clicarPorTexto("Opção 3");
+		clicarNoTexto("Opção 3");
 	}
 
 	public boolean verificarSeEstaNaOpcao3() {

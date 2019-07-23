@@ -3,7 +3,7 @@ package br.rs.pannuviamonteiro.appium.cttreinamento.pages;
 public class AbasPage extends BasePage {
 
 	public void clicarEmAbas() {
-		clicarPorTexto("ABAS");
+		clicarNoTexto("ABAS");
 	}
 
 	public boolean verificarSeEstaNaAba1() {
@@ -11,7 +11,7 @@ public class AbasPage extends BasePage {
 	}
 
 	public void clicarEmAba2() {
-		clicarPorTexto("ABA 2");
+		clicarNoTexto("ABA 2");
 	}
 
 	public boolean verificarSeEstaNaAba2() {

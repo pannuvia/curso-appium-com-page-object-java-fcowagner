@@ -5,17 +5,17 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.rs.pannuviamonteiro.appium.cttreinamento.pages.AlertasPage;
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.BasePage;
 import br.rs.pannuviamonteiro.appium.cttreinamento.pages.MenuPage;
 
 public class AlertasTest extends BaseTest {
 
 	private MenuPage menuPage;
-	private AlertasPage alertasPage;
+	private BasePage basePage;
 	
-	public AlertasTest() {
+	public AlertasTest() {	
+		 this.basePage = new BasePage();
 		 this.menuPage = new MenuPage();
-		 this.alertasPage = new AlertasPage();
 	}
 		
 	@Before
@@ -27,68 +27,71 @@ public class AlertasTest extends BaseTest {
 		}
 		
 		//acessar menu Alertas
-		this.menuPage.acessarAlertas();
+
 	}
 	
 	@Test
 	public void deveConfirmarAlertaSimples() {
 		
+		this.menuPage.acessarAlertas();
 		//clicar em Alert Simples
-		this.alertasPage.clicarEmAlertaSimples();
+		this.basePage.clicarNoTexto("ALERTA SIMPLES");
 		
 		//validar se o titulo Info apareceu
-		assertEquals("Info", this.alertasPage.capturarTituloDoAlerta());
+		assertEquals("Info", this.basePage.capturarTituloDoAlerta());
 		
 		//validar se a mensagem Pode clicar no OK ou fora da caixa para sair apareceu
-		assertEquals("Pode clicar no OK ou fora da caixa para sair", this.alertasPage.capturarMensagemDoAlerta());
+		assertEquals("Pode clicar no OK ou fora da caixa para sair", this.basePage.capturarMensagemDoAlerta());
 		
 		//clicar na coordenada fora da caixa
-		this.alertasPage.clicarNaCoordenada();
+		this.basePage.clicarNumaCoordenada(100, 150);
 		
 		//validar se texto Alerta Simples apareceu
-		assertEquals("ALERTA SIMPLES", this.alertasPage.capturarTipoDeAlerta("ALERTA SIMPLES"));
+		assertEquals("ALERTA SIMPLES", this.basePage.capturarTipoDeAlerta("ALERTA SIMPLES"));
 	}
 
 	@Test
 	public void deveConfirmarAlertaConfirm() {
 		
+		this.menuPage.acessarAlertas();
 		//clicar em Alerta Confirm
-		this.alertasPage.clicarEmAlertaConfirm();
+		this.basePage.clicarNoTexto("ALERTA CONFIRM");
 		
 		//validar se o titulo Info apareceu
-		assertEquals("Info", this.alertasPage.capturarTituloDoAlerta());
+		assertEquals("Info", this.basePage.capturarTituloDoAlerta());
 		
 		//validar se a mensagem Confirma a operação? apareceu
-		assertEquals("Confirma a operação?", this.alertasPage.capturarMensagemDoAlerta());
+		assertEquals("Confirma a operação?", this.basePage.capturarMensagemDoAlerta());
 		
 		//clicar em confirmar
-		this.alertasPage.clicarEmConfirmar();
+		this.basePage.clicarNoTexto("CONFIRMAR");
 		
 		//validar se a mensagem Confirmado apareceu
-		assertEquals("Confirmado", this.alertasPage.capturarMensagemDoAlerta());
+		assertEquals("Confirmado", this.basePage.capturarMensagemDoAlerta());
 		
 		//clicar em sair
-		this.alertasPage.clicarEmSair();
+		this.basePage.clicarNoTexto("SAIR");
 	}
 
 	
 	@Test
 	public void deveConfirmarAlertaRestritivo() {
 
+		this.menuPage.acessarAlertas();
 		//clicar em Alerta Restritivo
-		this.alertasPage.clicarEmAlertaRestritivo();
+		this.basePage.clicarNoTexto("ALERTA RESTRITIVO");
 		
 		//validar se o titulo Info apareceu
-		assertEquals("Info", this.alertasPage.capturarTituloDoAlerta());
+		assertEquals("Info", this.basePage.capturarTituloDoAlerta());
 		
 		//validar se a mensagem Não pode clicar fora, apenas no SAIR apareceu
-		assertEquals("Não pode clicar fora, apenas no SAIR", this.alertasPage.capturarMensagemDoAlerta());
+		assertEquals("Não pode clicar fora, apenas no SAIR", this.basePage.capturarMensagemDoAlerta());
 			
 		//clicar em sair
-		this.alertasPage.clicarEmSair();
+		this.basePage.clicarNoTexto("SAIR");
 		
 		//validar se texto Alerta Restritivo apareceu
-		assertEquals("ALERTA RESTRITIVO", this.alertasPage.capturarTipoDeAlerta("ALERTA RESTRITIVO"));
+		assertEquals("ALERTA RESTRITIVO", this.basePage.capturarTipoDeAlerta("ALERTA RESTRITIVO"));
 	}
 	
 }

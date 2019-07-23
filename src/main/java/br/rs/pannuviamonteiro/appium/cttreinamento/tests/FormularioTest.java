@@ -84,7 +84,7 @@ public class FormularioTest extends BaseTest {
 		this.formularioPage.clicarNosMinutos("35");
 		
 		//clicar em OK
-		this.formularioPage.clicarPorTexto("OK");
+		this.formularioPage.clicarNoTexto("OK");
 	}
 
 	private void devePreencherData() {
@@ -93,10 +93,10 @@ public class FormularioTest extends BaseTest {
 		this.formularioPage.clicarNoDataPicker("01/01/2000");
 		
 		//selecionar dia
-		this.formularioPage.clicarPorTexto("20");
+		this.formularioPage.clicarNoTexto("20");
 		
 		//clicar em OK
-		this.formularioPage.clicarPorTexto("OK");
+		this.formularioPage.clicarNoTexto("OK");
 	}		
 	
 }
