@@ -1,8 +1,13 @@
 package br.rs.pannuviamonteiro.appium.cttreinamento.tests;
 
+import static br.rs.pannuviamonteiro.appium.cttreinamento.core.DriverFactory.getDriver;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.rs.pannuviamonteiro.appium.cttreinamento.pages.BasePage;
 
@@ -15,23 +20,29 @@ public class ScrollTest extends BaseTest {
 	}
 
 	@Test
-	public void deveRealizarScroll() throws InterruptedException {
+	public void deveRealizarScrollUpDown() {
 
-//		// esperar até texto "Formulário" aparecer
-//		WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-//		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Formulário']")));
+		//realizar scroll up para acessar o menu "Opção bem escondida"
+		this.basePage.realizarScrollUp(0.9, 0.1);
 
-		// realizar scroll down
-		this.basePage.realizarScrollDown(0.9, 0.1);
-
-		// clicar no menu Opção bem escondida
+		//clicar no menu "Opção bem escondida"
 		this.basePage.clicarNoTextoDoElementoPorXpath("Opção bem escondida");
 
-		// validar se apareceu a mensagem Você achou essa opção
+		//validar se apareceu a mensagem Você achou essa opção
 		assertEquals("Você achou essa opção", this.basePage.capturarMensagemDoAlerta());
 
-		// clicar em OK
+		//clicar em OK
 		this.basePage.clicarNoTextoDoElementoPorXpath("OK");
+		
+		//esperar até o texto "Opção bem escondida" aparecer
+		WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Opção bem escondida']")));
+		
+		//realizar scroll down para visualizar o menu "Formulário"
+		this.basePage.realizarScrollDown(0.1, 0.9);
+		
+		//validar se apareceu o menu Formulário
+		assertTrue(this.basePage.validarSeExisteElementoPorXpathComOTexto("Formulário"));
 		
 	}
 }

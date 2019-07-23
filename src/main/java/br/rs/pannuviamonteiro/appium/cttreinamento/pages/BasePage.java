@@ -75,12 +75,12 @@ public class BasePage {
 			.perform();
 	}
 		
-	public void realizarScrollDown(double pontoAbaixo, double pontoAcima) {
+	public void realizarScrollUp(double pontoAbaixo, double pontoAcima) {
 		realizarScrollGenerico(pontoAbaixo, pontoAcima);
 	}
 	
-	public void realizarScrollUp(double pontoAcima, double pontoAbaixo) {
-		realizarScrollGenerico(pontoAbaixo, pontoAbaixo);
+	public void realizarScrollDown(double pontoAcima, double pontoAbaixo) {
+		realizarScrollGenerico(pontoAcima, pontoAbaixo);
 	}
 	
 	public void realizarSwipeGenerico(double pontoInicial, double pontoFinal) {
