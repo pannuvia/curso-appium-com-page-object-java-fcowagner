@@ -23,7 +23,7 @@ public class ScrollTest extends BaseTest {
 	public void deveRealizarScrollUpDown() {
 
 		//realizar scroll up para acessar o menu "Opção bem escondida"
-		this.basePage.realizarScrollUp(0.9, 0.1);
+		this.basePage.realizarScrollUpPelaJanela(0.9, 0.1);
 
 		//clicar no menu "Opção bem escondida"
 		this.basePage.clicarNoTextoDoElementoPorXpath("Opção bem escondida");
@@ -39,7 +39,7 @@ public class ScrollTest extends BaseTest {
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Opção bem escondida']")));
 		
 		//realizar scroll down para visualizar o menu "Formulário"
-		this.basePage.realizarScrollDown(0.1, 0.9);
+		this.basePage.realizarScrollDownPelaJanela(0.1, 0.9);
 		
 		//validar se apareceu o menu Formulário
 		assertTrue(this.basePage.validarSeExisteElementoPorXpathComOTexto("Formulário"));

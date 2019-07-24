@@ -18,7 +18,7 @@ public class SwipeTest extends BaseTest {
 	public void deveRealizarSwipeLeftRight() {
 		
 		//realziar scroll up para acessar o menu Swipe
-		this.basePage.realizarScrollUp(0.9, 0.1);
+		this.basePage.realizarScrollUpPelaJanela(0.9, 0.1);
 		
 		//clicar no menu Swipe
 		this.basePage.clicarNoTextoDoElementoPorXpath("Swipe");
@@ -27,7 +27,7 @@ public class SwipeTest extends BaseTest {
 		assertTrue(this.basePage.validarSeExisteElementoPorXpathComOTexto("a esquerda"));
 		
 		//realizar swipe para esquerda
-		this.basePage.realizarSwipeLeft(0.9, 0.1);
+		this.basePage.realizarSwipeLeftPelaJanela(0.9, 0.1);
 
 		//validar se o texto "E veja se" aparece
 		this.basePage.validarSeExisteElementoPorXpathComOTexto("E veja se");
@@ -45,7 +45,7 @@ public class SwipeTest extends BaseTest {
 		this.basePage.validarSeExisteElementoPorXpathComOTexto("E veja se");
 		
 		//realizar swipe para direita
-		this.basePage.realizarSwipeRight(0.1, 0.9);
+		this.basePage.realizarSwipeRightPelaJanela(0.1, 0.9);
 		
 		//validar se o texto "a esquerda" aparece
 		assertTrue(this.basePage.validarSeExisteElementoPorXpathComOTexto("a esquerda"));
