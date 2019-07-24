@@ -10,16 +10,6 @@ import io.appium.java_client.MobileElement;
 public class FormularioPage extends BasePage {
 
 	public void preencherTextFieldNome(String nome) {
-<<<<<<< HEAD
-		preencherTextField(MobileBy.AccessibilityId("nome"), nome);
-	}
-
-	public void selecionarValorNoCombo(String combo) {
-		selecionarCombo(MobileBy.AccessibilityId("console"), combo);
-	}
-
-	public void clicarNoSeekBar(double posicaoClicada) {
-=======
 		preencherCampo(MobileBy.AccessibilityId("nome"), nome);
 	}
 
@@ -31,17 +21,12 @@ public class FormularioPage extends BasePage {
 		
 		int delta = 50;
 		
->>>>>>> develop
 		MobileElement seekbar = getDriver().findElement((MobileBy.AccessibilityId("slid")));
 		
 		int yInicial = seekbar.getLocation().y + (seekbar.getSize().height / 2);
 		System.out.println(yInicial);
 		
-<<<<<<< HEAD
-		int xInicial = (int) (seekbar.getLocation().x + (seekbar.getSize().width * posicaoClicada));
-=======
 		int xInicial = (int) ((seekbar.getLocation().x) + delta + ((seekbar.getSize().width - 2 * delta) * posicaoClicada));
->>>>>>> develop
 		System.out.println(xInicial);
 		
 		clicarNumaCoordenada(xInicial, yInicial);
