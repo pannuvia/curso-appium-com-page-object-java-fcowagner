@@ -6,28 +6,26 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.rs.pannuviamonteiro.appium.cttreinamento.pages.BasePage;
 import br.rs.pannuviamonteiro.appium.cttreinamento.pages.FormularioPage;
-import br.rs.pannuviamonteiro.appium.cttreinamento.pages.MenuPage;
 
 public class FormularioTest extends BaseTest {
 
-	private MenuPage menuPage;
+	private BasePage basePage;
 	private FormularioPage formularioPage;
 
 
 	public FormularioTest() {
-		this.menuPage = new MenuPage();
+		this.basePage = new BasePage();
 		this.formularioPage = new FormularioPage();
-	}
-
-	@Before
-	public void setUp() {
-		this.menuPage.acessarFormulario();
 	}
 
 	@Test
 	public void devePreencherFormulario() {
 
+		//acessar menu Formulário
+		this.basePage.clicarNoTextoDoElementoPorXpath("Formulário");
+		
 		//preencher nome
 		this.formularioPage.preencherTextFieldNome("Pannuvia");
 
@@ -57,7 +55,11 @@ public class FormularioTest extends BaseTest {
 		assertEquals("Console: switch", this.formularioPage.capturarComboAposSalvar());
 		
 		//validar valor do seekbar
+<<<<<<< HEAD
 		assertEquals("Slider: 67", this.formularioPage.capturarSeekBarAposSalvar());
+=======
+		assertEquals("Slider: 65", this.formularioPage.capturarSeekBarAposSalvar());
+>>>>>>> develop
 				
 		//validar se checkbox está marcado
 		assertTrue(this.formularioPage.capturarCheckboxAposSalvar().endsWith("Marcado"));
@@ -66,10 +68,10 @@ public class FormularioTest extends BaseTest {
 		assertTrue(this.formularioPage.capturarSwitchAposSalvar().endsWith("Off"));
 			
 		//validar data preenchida
-		assertTrue(this.formularioPage.verificarSeExisteElementoComOTexto("20/2/2000"));
+		assertTrue(this.formularioPage.validarSeExisteElementoPorXpathComOTexto("20/2/2000"));
 		
       	//validar horario preenchido
-    	assertTrue(this.formularioPage.verificarSeExisteElementoComOTexto("16:35"));
+    	assertTrue(this.formularioPage.validarSeExisteElementoPorXpathComOTexto("16:35"));
 	}
 	
 	private void devePreencherHorario() {
@@ -84,7 +86,7 @@ public class FormularioTest extends BaseTest {
 		this.formularioPage.clicarNosMinutos("35");
 		
 		//clicar em OK
-		this.formularioPage.clicarPorTexto("OK");
+		this.formularioPage.clicarNoTextoDoElementoPorXpath("OK");
 	}
 
 	private void devePreencherData() {
@@ -93,10 +95,10 @@ public class FormularioTest extends BaseTest {
 		this.formularioPage.clicarNoDataPicker("01/01/2000");
 		
 		//selecionar dia
-		this.formularioPage.clicarPorTexto("20");
+		this.formularioPage.clicarNoTextoDoElementoPorXpath("20");
 		
 		//clicar em OK
-		this.formularioPage.clicarPorTexto("OK");
+		this.formularioPage.clicarNoTextoDoElementoPorXpath("OK");
 	}		
 	
 }
