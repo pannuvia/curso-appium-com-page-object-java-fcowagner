@@ -3,7 +3,6 @@ package br.rs.pannuviamonteiro.appium.cttreinamento.tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import br.rs.pannuviamonteiro.appium.cttreinamento.pages.BasePage;
@@ -55,11 +54,7 @@ public class FormularioTest extends BaseTest {
 		assertEquals("Console: switch", this.formularioPage.capturarComboAposSalvar());
 		
 		//validar valor do seekbar
-<<<<<<< HEAD
-		assertEquals("Slider: 67", this.formularioPage.capturarSeekBarAposSalvar());
-=======
 		assertEquals("Slider: 65", this.formularioPage.capturarSeekBarAposSalvar());
->>>>>>> develop
 				
 		//validar se checkbox está marcado
 		assertTrue(this.formularioPage.capturarCheckboxAposSalvar().endsWith("Marcado"));
