@@ -26,13 +26,13 @@ public class ScrollTest extends BaseTest {
 		this.basePage.realizarScrollUpPelaJanela(0.9, 0.1);
 
 		//clicar no menu "Opção bem escondida"
-		this.basePage.clicarNoTextoDoElementoPorXpath("Opção bem escondida");
+		clicarNoElementoPorXPathComTexto("Opção bem escondida");
 
 		//validar se apareceu a mensagem Você achou essa opção
-		assertEquals("Você achou essa opção", this.basePage.capturarMensagemDoAlerta());
+		validarSeExisteElementoPorXpathComOTexto("Você achou essa opção");
 
 		//clicar em OK
-		this.basePage.clicarNoTextoDoElementoPorXpath("OK");
+		clicarNoElementoPorXPathComTexto("OK");
 		
 		//esperar até o texto "Opção bem escondida" aparecer
 		WebDriverWait wait = new WebDriverWait(getDriver(), 10);
@@ -42,7 +42,7 @@ public class ScrollTest extends BaseTest {
 		this.basePage.realizarScrollDownPelaJanela(0.1, 0.9);
 		
 		//validar se apareceu o menu Formulário
-		assertTrue(this.basePage.validarSeExisteElementoPorXpathComOTexto("Formulário"));
+		validarSeExisteElementoPorXpathComOTexto("Formulário");
 		
 	}
 }
