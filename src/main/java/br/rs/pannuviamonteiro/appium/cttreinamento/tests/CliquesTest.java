@@ -1,46 +1,54 @@
 package br.rs.pannuviamonteiro.appium.cttreinamento.tests;
 
-import static org.junit.Assert.assertEquals;
+import static br.rs.pannuviamonteiro.appium.cttreinamento.core.DriverFactory.getDriver;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
-import br.rs.pannuviamonteiro.appium.cttreinamento.pages.BasePage;
-import br.rs.pannuviamonteiro.appium.cttreinamento.pages.CliquesPage;
+import io.appium.java_client.TouchAction;
 
 public class CliquesTest extends BaseTest {
 
-	private BasePage basePage;
-	private CliquesPage cliquesPage;
-	
-	public CliquesTest() {
-		this.basePage = new BasePage();
-		this.cliquesPage = new CliquesPage();
-	}
-	
 	@Before
 	public void setUp() {
-		basePage.clicarNoTextoDoElementoPorXpath("Cliques");
+		clicarNoElementoPorXPathComTexto("Cliques");
 	}
-	
+
 	@Test
 	public void deveRealizarCliqueLongo() {
-		
+
 		//clicar no Clique Longo
-		cliquesPage.clicarEmCliqueLongo();
-		
+		new TouchAction(getDriver()).longPress(getDriver().findElement(By.xpath("//*[@text='Clique Longo']")))
+				.perform();
+
 		//validar se apareceu o texto Clique Longo
-		assertEquals("Clique Longo", cliquesPage.capturarTextoAposClicar());
+		validarSeExisteElementoPorXpathComOTexto("Clique Longo");
+	}
+
+	@Test
+	public void deveRealizarCliqueDuplo() {
+
+		//clicar duas vezes no Clique duplo
+		clicarNoElementoPorXPathComTexto("Clique duplo");
+		clicarNoElementoPorXPathComTexto("Clique duplo");
+
+		//validar se apareceu o texto Duplo Clique
+		validarSeExisteElementoPorXpathComOTexto("Clique duplo");
 	}
 	
 	@Test
-	public void deveRealizarCliqueDuplo() {
-				
-		//clicar duas vezes no Clique duplo
-		basePage.clicarNoTextoDoElementoPorXpath("Clique duplo");
-		basePage.clicarNoTextoDoElementoPorXpath("Clique duplo");
+	public void deveRealizarCliqueDuploLento() {
+
+		//clicar no Clique Longo
+		new TouchAction(getDriver()).longPress(getDriver().findElement(By.xpath("//*[@text='Clique duplo lento']")))
+				.perform();
 		
-		//validar se apareceu o texto Duplo Clique
-		assertEquals("Duplo Clique", cliquesPage.capturarTextoAposClicar());
+		new TouchAction(getDriver()).longPress(getDriver().findElement(By.xpath("//*[@text='Clique duplo lento']")))
+		.perform();
+
+		//validar se apareceu o texto Clique Longo
+		validarSeExisteElementoPorXpathComOTexto("Clique duplo lento");
 	}
+	
 }

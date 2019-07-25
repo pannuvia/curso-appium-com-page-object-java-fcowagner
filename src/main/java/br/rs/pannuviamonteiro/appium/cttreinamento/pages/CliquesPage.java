@@ -1,19 +1,25 @@
 package br.rs.pannuviamonteiro.appium.cttreinamento.pages;
 
-import static br.rs.pannuviamonteiro.appium.cttreinamento.core.DriverFactory.getDriver;
-
-import org.openqa.selenium.By;
-
-import io.appium.java_client.TouchAction;
-
 public class CliquesPage extends BasePage {
 
-	public void clicarEmCliqueLongo() {
-		new TouchAction(getDriver()).longPress(getDriver().findElement(By.xpath("//*[@text='Clique Longo']"))).perform();
-	}
-
-	public String capturarTextoAposClicar() {
-		return getDriver().findElement(By.xpath("(//android.widget.TextView)[3]")).getText();
-	}
+//	public MobileElement elementoCliques(String textoCliques) {
+//	return elementoPorXPathComTexto(textoCliques);
+//}
+//	
+//	public MobileElement elementoCliqueLongo(String textoCliqueLongo) {
+//		return elementoPorXPathComTexto(textoCliqueLongo);
+//	}
+//	
+//	public MobileElement elementoCliqueDuplo(String textoCliqueDuplo) {
+//		return elementoPorXPathComTexto(textoCliqueDuplo);
+//	}
+//	
+//	public MobileElement elementoCliqueDuploLento(String textoCliqueDuploLento) {
+//		return elementoPorXPathComTexto(textoCliqueDuploLento);
+//	}
+//
+//	public MobileElement campoComTextoAposClique() {
+//		return campoPor(By.xpath("(//android.widget.TextView)[3]"));
+//	}
 
 }
