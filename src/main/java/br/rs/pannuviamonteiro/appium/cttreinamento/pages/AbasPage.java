@@ -2,19 +2,23 @@ package br.rs.pannuviamonteiro.appium.cttreinamento.pages;
 
 public class AbasPage extends BasePage {
 
-	public void clicarEmAbas() {
-		clicarNoTextoDoElementoPorXpath("ABAS");
-	}
+//	public MobileElement elementoAbas(String textoAbas) {
+//		return elementoPorXPathComTexto(textoAbas);
+//	}
 
-	public boolean verificarSeEstaNaAba1() {
-		return validarSeExisteElementoPorXpathComOTexto("Este é o conteúdo da Aba 1");
-	}
+//	public MobileElement elementoAba1(String tituloAba1) {
+//	return elementoPorXPathComTexto(tituloAba1);
+//}
+	
+//	public MobileElement textoDaAba1(String textoAba1) {
+//		return elementoPorXPathComTexto(textoAba1);
+//	}
 
-	public void clicarEmAba2() {
-		clicarNoTextoDoElementoPorXpath("ABA 2");
-	}
+//	public MobileElement elementoAba2(String tituloAba2) {
+//		return elementoPorXPathComTexto(tituloAba2);
+//	}
 
-	public boolean verificarSeEstaNaAba2() {
-		 return validarSeExisteElementoPorXpathComOTexto("Este é o conteúdo da Aba 2");
-	}
+//	public MobileElement textoDaAba2(String textoAba2) {
+//		return elementoPorXPathComTexto(textoAba2);
+//	}
 }
