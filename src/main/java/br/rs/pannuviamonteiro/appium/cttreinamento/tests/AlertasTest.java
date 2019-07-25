@@ -1,20 +1,10 @@
 package br.rs.pannuviamonteiro.appium.cttreinamento.tests;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import br.rs.pannuviamonteiro.appium.cttreinamento.pages.BasePage;
-
 public class AlertasTest extends BaseTest {
 
-	private BasePage basePage;
-	
-	public AlertasTest() {	
-		 this.basePage = new BasePage();
-	}
-		
 	@Before
 	public void setUp() {
 		try {
@@ -24,67 +14,67 @@ public class AlertasTest extends BaseTest {
 		}
 		
 		//acessar menu Alertas
-		this.basePage.clicarNoTextoDoElementoPorXpath("Alertas");
+		clicarNoElementoPorXPathComTexto("Alertas");
 	}
 	
 	@Test
 	public void deveConfirmarAlertaSimples() {
 		
 		//clicar em Alert Simples
-		this.basePage.clicarNoTextoDoElementoPorXpath("ALERTA SIMPLES");
+		clicarNoElementoPorXPathComTexto("ALERTA SIMPLES");
 		
 		//validar se o titulo Info apareceu
-		assertEquals("Info", this.basePage.capturarTituloDoAlerta());
+		validarSeExisteElementoPorXpathComOTexto("Info");
 		
 		//validar se a mensagem Pode clicar no OK ou fora da caixa para sair apareceu
-		assertEquals("Pode clicar no OK ou fora da caixa para sair", this.basePage.capturarMensagemDoAlerta());
+		validarSeExisteElementoPorXpathComOTexto("Pode clicar no OK ou fora da caixa para sair");
 		
 		//clicar na coordenada fora da caixa
-		this.basePage.clicarNumaCoordenada(100, 150);
+		clicarNumaCoordenadaDoElemento(100, 150);
 		
 		//validar se texto Alerta Simples apareceu
-		assertEquals("ALERTA SIMPLES", this.basePage.capturarTipoDeAlerta("ALERTA SIMPLES"));
+		validarSeExisteElementoPorXpathComOTexto("ALERTA SIMPLES");
 	}
 
 	@Test
 	public void deveConfirmarAlertaConfirm() {
 		
 		//clicar em Alerta Confirm
-		this.basePage.clicarNoTextoDoElementoPorXpath("ALERTA CONFIRM");
+		clicarNoElementoPorXPathComTexto("ALERTA CONFIRM");
 		
 		//validar se o titulo Info apareceu
-		assertEquals("Info", this.basePage.capturarTituloDoAlerta());
+		validarSeExisteElementoPorXpathComOTexto("Info");
 		
 		//validar se a mensagem Confirma a operação? apareceu
-		assertEquals("Confirma a operação?", this.basePage.capturarMensagemDoAlerta());
+		validarSeExisteElementoPorXpathComOTexto("Confirma a operação?");
 		
 		//clicar em confirmar
-		this.basePage.clicarNoTextoDoElementoPorXpath("CONFIRMAR");
+		clicarNoElementoPorXPathComTexto("CONFIRMAR");
 		
 		//validar se a mensagem Confirmado apareceu
-		assertEquals("Confirmado", this.basePage.capturarMensagemDoAlerta());
+		validarSeExisteElementoPorXpathComOTexto("Confirmado");
 		
 		//clicar em sair
-		this.basePage.clicarNoTextoDoElementoPorXpath("SAIR");
+		clicarNoElementoPorXPathComTexto("SAIR");
 	}
 
 	@Test
 	public void deveConfirmarAlertaRestritivo() {
 
 		//clicar em Alerta Restritivo
-		this.basePage.clicarNoTextoDoElementoPorXpath("ALERTA RESTRITIVO");
+		clicarNoElementoPorXPathComTexto("ALERTA RESTRITIVO");
 		
 		//validar se o titulo Info apareceu
-		assertEquals("Info", this.basePage.capturarTituloDoAlerta());
+		validarSeExisteElementoPorXpathComOTexto("Info");
 		
 		//validar se a mensagem Não pode clicar fora, apenas no SAIR apareceu
-		assertEquals("Não pode clicar fora, apenas no SAIR", this.basePage.capturarMensagemDoAlerta());
+		validarSeExisteElementoPorXpathComOTexto("Não pode clicar fora, apenas no SAIR");
 			
 		//clicar em sair
-		this.basePage.clicarNoTextoDoElementoPorXpath("SAIR");
+		clicarNoElementoPorXPathComTexto("SAIR");
 		
 		//validar se texto Alerta Restritivo apareceu
-		assertEquals("ALERTA RESTRITIVO", this.basePage.capturarTipoDeAlerta("ALERTA RESTRITIVO"));
+		validarSeExisteElementoPorXpathComOTexto("ALERTA RESTRITIVO");
 	}
 	
 }
