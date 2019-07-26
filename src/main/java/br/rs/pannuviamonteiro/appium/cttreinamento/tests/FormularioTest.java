@@ -5,95 +5,94 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import br.rs.pannuviamonteiro.appium.cttreinamento.pages.BasePage;
 import br.rs.pannuviamonteiro.appium.cttreinamento.pages.FormularioPage;
 
 public class FormularioTest extends BaseTest {
 
-	private BasePage basePage;
 	private FormularioPage formularioPage;
 
-
 	public FormularioTest() {
-		this.basePage = new BasePage();
 		this.formularioPage = new FormularioPage();
 	}
 
 	@Test
 	public void devePreencherFormulario() {
 
-		//acessar menu Formulário
-		this.basePage.clicarNoTextoDoElementoPorXpath("Formulário");
-		
-		//preencher nome
-		this.formularioPage.preencherTextFieldNome("Pannuvia");
+		// acessar menu Formulário
+		clicarNoElementoPorXPathComTexto("Formulário");
 
-		//selecionar o valor do combo
-		this.formularioPage.selecionarValorNoCombo("Nintendo Switch");
+		// preencher nome
+		this.formularioPage.campoNome().sendKeys("Pannuvia");
 
-		//clicar no seekbar
-		this.formularioPage.clicarNoSeekBar(0.65);
-		
-		//clicar no checkbox
-		this.formularioPage.clicarNoCheckbox();
+		// clicar no combo
+		this.formularioPage.campoCombo().click();
 
-		//clicar no switch
-		this.formularioPage.clicarNoSwitch();
-		
+		// selecionar a opção desejada no combo
+		clicarNoElementoPorXPathComTexto("Nintendo Switch");
+
+		// clicar no seekbar
+		this.formularioPage.campoSeekBar(0.65).click();
+
+		// clicar no checkbox
+		this.formularioPage.campoCheckbox().click();
+
+		// clicar no switch
+		this.formularioPage.campoSwitch().click();
+
 		devePreencherData();
-		
+
 		devePreencherHorario();
-					
-		//clicar em salvar
-		this.formularioPage.clicarEmSalvar();
+
+		// clicar em salvar
+		this.formularioPage.botaoSalvar().click();
+
+		// validar nome preenchido
+		assertEquals("Nome: Pannuvia", this.formularioPage.nomeAposSalvar().getText());
+
+		// validar valor do combo
+		assertEquals("Console: switch", this.formularioPage.comboAposSalvar().getText());
+
+		// validar valor do seekbar
+		assertEquals("Slider: 51", this.formularioPage.seekBarAposSalvar().getText());
+
+		// validar se checkbox está marcado
+		assertTrue(this.formularioPage.checkboxAposSalvar().getText().endsWith("Marcado"));
 		
-		//validar nome preenchido
-		assertEquals("Nome: Pannuvia", this.formularioPage.capturarNomeAposSalvar());
-		
-		//validar valor do combo
-		assertEquals("Console: switch", this.formularioPage.capturarComboAposSalvar());
-		
-		//validar valor do seekbar
-		assertEquals("Slider: 65", this.formularioPage.capturarSeekBarAposSalvar());
-				
-		//validar se checkbox está marcado
-		assertTrue(this.formularioPage.capturarCheckboxAposSalvar().endsWith("Marcado"));
-		
-		//validar se switch foi desligado
-		assertTrue(this.formularioPage.capturarSwitchAposSalvar().endsWith("Off"));
-			
-		//validar data preenchida
-		assertTrue(this.formularioPage.validarSeExisteElementoPorXpathComOTexto("20/2/2000"));
-		
-      	//validar horario preenchido
-    	assertTrue(this.formularioPage.validarSeExisteElementoPorXpathComOTexto("16:35"));
+		// validar se switch foi desligado
+		assertTrue(this.formularioPage.switchAposSalvar().getText().endsWith("Off"));
+
+		// validar data preenchida
+		validarSeExisteElementoPorXpathComOTexto("20/2/2000");
+
+		// validar horario preenchido
+		validarSeExisteElementoPorXpathComOTexto("16:35");
 	}
-	
+
 	private void devePreencherHorario() {
-		
-		//clicar no timepicker
-		this.formularioPage.clicarNoTimePicker("06:00");
-		
-		//selecionar hora
-		this.formularioPage.clicarNaHora("16");
-				
-		//selecionar minutos
-		this.formularioPage.clicarNosMinutos("35");
-		
-		//clicar em OK
-		this.formularioPage.clicarNoTextoDoElementoPorXpath("OK");
+
+		// clicar no timepicker
+		this.formularioPage.campoTimePicker("06:00").click();
+
+		// selecionar hora
+		this.formularioPage.campoHora("16").click();
+
+		// selecionar minutos
+		this.formularioPage.campoMinutos("35").click();
+
+		// clicar em OK
+		clicarNoElementoPorXPathComTexto("OK");
 	}
 
 	private void devePreencherData() {
-		
-		//clicar no datapicker
-		this.formularioPage.clicarNoDataPicker("01/01/2000");
-		
-		//selecionar dia
-		this.formularioPage.clicarNoTextoDoElementoPorXpath("20");
-		
-		//clicar em OK
-		this.formularioPage.clicarNoTextoDoElementoPorXpath("OK");
-	}		
-	
+
+		// clicar no datapicker
+		this.formularioPage.campoDataPicker("01/01/2000").click();
+
+		// selecionar dia
+		clicarNoElementoPorXPathComTexto("20");
+
+		// clicar em OK
+		clicarNoElementoPorXPathComTexto("OK");
+	}
+
 }

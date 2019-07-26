@@ -9,15 +9,19 @@ import io.appium.java_client.MobileElement;
 
 public class FormularioPage extends BasePage {
 
-	public void preencherTextFieldNome(String nome) {
-		preencherCampo(MobileBy.AccessibilityId("nome"), nome);
+	public MobileElement campoNome() {
+		return campoPorLocator(MobileBy.AccessibilityId("nome"));
 	}
-
-	public void selecionarValorNoCombo(String combo) {
-		clicarNoCombo(MobileBy.AccessibilityId("console"), combo);
+	
+	public MobileElement campoCombo() {
+		return getDriver().findElement(MobileBy.AccessibilityId("console"));
 	}
-
-	public void clicarNoSeekBar(double posicaoClicada) {
+		
+	public MobileElement opcaoCombo(String texto) {
+			return getDriver().findElement(By.xpath("//android.widget.CheckedTextView[@text='" + texto + "']"));
+	}
+		
+	public MobileElement campoSeekBar(double posicaoClicada) {
 		
 		int delta = 50;
 		
@@ -29,62 +33,57 @@ public class FormularioPage extends BasePage {
 		int xInicial = (int) ((seekbar.getLocation().x) + delta + ((seekbar.getSize().width - 2 * delta) * posicaoClicada));
 		System.out.println(xInicial);
 		
-		clicarNumaCoordenada(xInicial, yInicial);
+		return seekbar;
 	}
 	
-	public void clicarNoCheckbox() {
-		clicar(By.className("android.widget.CheckBox"));
+	public MobileElement campoCheckbox() {
+		return campoPorLocator(By.className("android.widget.CheckBox"));
 	}
 
-	public void clicarNoSwitch() {
-		clicar(MobileBy.AccessibilityId("switch"));
+	public MobileElement campoSwitch() {
+		return campoPorLocator(MobileBy.AccessibilityId("switch"));
 	}
 	
-	public void clicarNoDataPicker(String data) {
-		clicar(By.xpath("//android.widget.TextView[@text='"+ data +"']"));
+	public MobileElement campoDataPicker(String data) {
+		return elementoPorXPathComTexto(data);
 	}
 	
-	public void clicarNoTimePicker(String horario) {
-		clicar(By.xpath("//android.widget.TextView[@text='"+ horario +"']"));
+	public MobileElement campoTimePicker(String horario) {
+		return elementoPorXPathComTexto(horario);
+		//return campoPorLocator(By.xpath("//android.widget.TextView[@text='"+ horario +"']"));
 	}
 	
-	public void clicarNaHora(String hora) {
-		clicar(MobileBy.AccessibilityId(hora));
+	public MobileElement campoHora(String hora) {
+		return campoPorLocator(MobileBy.AccessibilityId(hora));
 	}
 	
-	public void clicarNosMinutos(String minutos) {
-		clicar(MobileBy.AccessibilityId(minutos));
+	public MobileElement campoMinutos(String minutos) {
+		return campoPorLocator(MobileBy.AccessibilityId(minutos));
 	}
 
-	public boolean verificarSeCheckboxEstaMarcado() {
-		return validarSeEstaMarcado(By.className("android.widget.CheckBox"));
-	}
-
-	public boolean verificarSeSwitchEstaMarcado() {
-		return validarSeEstaMarcado(MobileBy.AccessibilityId("switch"));
-	}
-
-	public String capturarNomeAposSalvar() {
-		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Nome:')]"));
-	}
-
-	public String capturarComboAposSalvar() {
-		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Console:')]"));
-	}
-
-	public String capturarCheckboxAposSalvar() {
-		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Checkbox:')]"));
-	}
-
-	public String capturarSwitchAposSalvar() {
-		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Switch:')]"));
+	public MobileElement botaoSalvar() {
+		return elementoPorXPathComTexto("SALVAR");
 	}
 	
-	public String capturarSeekBarAposSalvar() {
-		return capturarTexto(By.xpath("//android.widget.TextView[starts-with(@text, 'Slider:')]"));
+	public MobileElement nomeAposSalvar() {
+		return campoPorLocator(By.xpath("//android.widget.TextView[starts-with(@text, 'Nome:')]"));
 	}
 
-	public void clicarEmSalvar() {
-		clicarNoTextoDoElementoPorXpath("SALVAR");
+	public MobileElement comboAposSalvar() {
+		return campoPorLocator(By.xpath("//android.widget.TextView[starts-with(@text, 'Console:')]"));
 	}
+
+	public MobileElement checkboxAposSalvar() {
+		return campoPorLocator(By.xpath("//android.widget.TextView[starts-with(@text, 'Checkbox:')]"));
+	}
+
+	public MobileElement switchAposSalvar() {
+		return campoPorLocator(By.xpath("//android.widget.TextView[starts-with(@text, 'Switch:')]"));
+	}
+
+	public MobileElement seekBarAposSalvar() {
+		return campoPorLocator(By.xpath("//android.widget.TextView[starts-with(@text, 'Slider:')]"));
+	}
+
+	
 }

@@ -58,14 +58,14 @@ public class BaseTest {
 
 	// refatorado
 	public void preencherCampoPorLocatorComTexto(By by, String texto) {
-		this.basepage.campoPor(by).sendKeys(texto);
+		this.basepage.campoPorLocator(by).sendKeys(texto);
 	}
 
 //**********************************************************            CLICAR         ****************************************************************************************
 
 	// refatorado
 	public void clicarNoElementoPor(By by) {
-		this.basepage.elementoPor(by).click();
+		this.basepage.campoPorLocator(by).click();
 	}
 
 	// refatorado
@@ -83,10 +83,6 @@ public class BaseTest {
 		this.basepage.coordenadaDoElemento(x, y);
 	}
 
-	// refatorado
-	public void clicarNoComboPorXPathComValor(By by, String valor) {
-		this.basepage.comboPorXPathComValor(by, valor).click();
-	}
 
 //**********************************************************            CAPTURAR         ***************************************************************************************
 
@@ -97,7 +93,7 @@ public class BaseTest {
 
 	// refatorado
 	public String capturarPorTexto(By by) {
-		return this.basepage.textoPorLocator(by).getText();
+		return this.basepage.campoPorLocator(by).getText();
 	}
 
 	// refatorado
