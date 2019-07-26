@@ -34,6 +34,10 @@ public class BasePage {
 	public TouchAction coordenadaDoElemento(int x, int y) {
 		return new TouchAction(getDriver()).tap(x, y);
 	}
+	
+	public TouchAction cliqueLongoNoElementoPorLocator(By by) {
+		return new TouchAction(getDriver()).longPress(getDriver().findElement(by));
+	}
 
 
 //**********************************************************            CAPTURAR         ***************************************************************************************

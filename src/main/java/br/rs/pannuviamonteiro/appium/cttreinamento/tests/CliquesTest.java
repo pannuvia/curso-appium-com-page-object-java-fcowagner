@@ -15,13 +15,14 @@ public class CliquesTest extends BaseTest {
 		clicarNoElementoPorXPathComTexto("Cliques");
 	}
 
+	BaseTest baseTest = new BaseTest();
+	
 	@Test
 	public void deveRealizarCliqueLongo() {
 
 		//clicar no Clique Longo
-		new TouchAction(getDriver()).longPress(getDriver().findElement(By.xpath("//*[@text='Clique Longo']")))
-				.perform();
-
+		clicarLongoNoElementoPorLocator(By.xpath("//*[@text='Clique Longo']"));
+		
 		//validar se apareceu o texto Clique Longo
 		validarSeExisteElementoPorXpathComOTexto("Clique Longo");
 	}
@@ -41,11 +42,8 @@ public class CliquesTest extends BaseTest {
 	public void deveRealizarCliqueDuploLento() {
 
 		//clicar no Clique Longo
-		new TouchAction(getDriver()).longPress(getDriver().findElement(By.xpath("//*[@text='Clique duplo lento']")))
-				.perform();
-		
-		new TouchAction(getDriver()).longPress(getDriver().findElement(By.xpath("//*[@text='Clique duplo lento']")))
-		.perform();
+		clicarLongoNoElementoPorLocator(By.xpath("//*[@text='Clique duplo lento']"));
+		clicarLongoNoElementoPorLocator(By.xpath("//*[@text='Clique duplo lento']"));
 
 		//validar se apareceu o texto Clique Longo
 		validarSeExisteElementoPorXpathComOTexto("Clique duplo lento");
